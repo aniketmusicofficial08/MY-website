@@ -1,0 +1,758 @@
+/* ============================================================================
+   Aniket Patel & Band — IDENTITY LAYER
+   Loaded last, after style.css / booking.css / media.css / redesign.css.
+
+   What lives here:
+     1. the spacing scale every section now measures itself against
+     2. the brand mark, the artist DP, and the symbol treatment
+     3. the re-cut music / events geometry (3 × 3, no orphan cells)
+     4. academies, feedback banner, feedback page, rebuilt footer
+
+   Rules kept from the existing system: gold is punctuation; one hover language
+   (-3px lift, warming border, gold icon); resting state is always visible.
+   ========================================================================= */
+
+:root {
+  /* ---- spacing scale -------------------------------------------------- */
+  --space-3xs: .25rem;
+  --space-2xs: .45rem;
+  --space-xs:  .65rem;
+  --space-sm:  .95rem;
+  --space-md:  1.4rem;
+  --space-lg:  2.2rem;
+  --space-xl:  clamp(2.6rem, 4.5vw, 4rem);
+
+  /* Vertical rhythm. The old value peaked at 10rem (160px) which is what put
+     the empty bands between sections; 7.5rem still reads as luxury spacing. */
+  --section-space: clamp(4.25rem, 6.4vw, 7.25rem);
+
+  /* Gap between a section heading and its content. */
+  --content-gap: clamp(2rem, 3.6vw, 3.25rem);
+
+  /* Card interior + grid gutter — one value, used by every card system. */
+  --card-padding: clamp(1.05rem, 1.35vw, 1.5rem);
+  --grid-gap: clamp(.7rem, 1.05vw, 1.05rem);
+
+  --media-radius: 2px;
+  --ring-gold: rgba(214, 168, 79, .55);
+}
+
+/* The SEO title is intentionally descriptive, so it uses a controlled editorial
+   scale instead of the short-name hero's oversized monogram composition. */
+.hero h1.hero__title--seo {
+  max-width: 12ch;
+  font-size: clamp(3.7rem, 6.3vw, 6.6rem);
+  line-height: .84;
+}
+.hero h1.hero__title--seo .title-line:nth-child(2),
+.hero h1.hero__title--seo .title-line:nth-child(3) {
+  width: auto;
+  margin: .08em 0 0;
+  font-size: .68em;
+  line-height: .95;
+}
+.hero h1.hero__title--seo .title-line:nth-child(3) { max-width: 15ch; font-size: .42em; letter-spacing: -.025em; }
+
+@media (max-width: 700px) {
+  .hero h1.hero__title--seo { max-width: none; font-size: clamp(3rem, 13vw, 4.6rem); line-height: .9; }
+  .hero h1.hero__title--seo .title-line:nth-child(2),
+  .hero h1.hero__title--seo .title-line:nth-child(3) { margin-left: 0; }
+  .hero h1.hero__title--seo .title-line:nth-child(3) { font-size: .48em; }
+}
+
+/* Section headings all sit the same distance from their content. */
+.section-heading--split { margin-bottom: var(--content-gap); }
+.section-heading--center { margin-bottom: var(--content-gap); }
+.section-heading .eyebrow { margin-bottom: var(--space-md); }
+
+/* ============================================================================
+   SYMBOL TREATMENT
+   ========================================================================= */
+
+/* An eyebrow carries either the hairline dash or a symbol, never both. */
+.eyebrow--sym::before { display: none; }
+.eyebrow--sym .icon { width: 1.15em; height: 1.15em; color: var(--gold); stroke-width: 1.4; }
+
+.icon { stroke-width: 1.5; }
+
+/* ---------------------------------------------------------------- brand mark */
+
+.brand__logo {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  color: var(--gold);
+  transition: color var(--duration-medium) var(--ease-premium),
+              transform var(--duration-slow) var(--ease-premium);
+}
+.brand:hover .brand__logo { color: var(--gold-light); transform: rotate(-6deg); }
+.brand--footer .brand__logo { width: 42px; height: 42px; }
+
+.preloader__logo { width: 62px; height: 62px; color: var(--gold); }
+
+/* ============================================================================
+   NAVIGATION
+   Ten destinations now. Desktop stays text-led; the mobile sheet is symbol-led.
+   ========================================================================= */
+
+.nav-menu { gap: clamp(.6rem, 1.3vw, 1.5rem); }
+.nav-menu a {
+  display: inline-flex;
+  align-items: center;
+  gap: .42rem;
+  font-size: .71rem;
+}
+.nav-menu a .icon {
+  width: .95em;
+  height: .95em;
+  opacity: .5;
+  transition: opacity var(--duration-medium) var(--ease-premium),
+              color var(--duration-medium) var(--ease-premium);
+}
+.nav-menu a:hover .icon,
+.nav-menu a[aria-current="true"] .icon { opacity: 1; color: var(--gold); }
+.nav-menu a:not(.nav-menu__cta)::after { bottom: -.4rem; }
+.nav-menu__cta { padding: .72rem 1rem; }
+.nav-menu__cta em { margin-left: .35rem; font-style: normal; }
+.nav-menu__cta .icon { opacity: .85; }
+
+/* The mobile-only identity strip inside the sheet. */
+.nav-profile { display: none; }
+
+@media (min-width: 1025px) {
+  /* Below 1280 the row is tight enough that ten glyphs read as clutter. */
+  .nav-menu a .icon { display: none; }
+}
+@media (min-width: 1280px) {
+  .nav-menu a .icon { display: block; }
+}
+
+@media (max-width: 1024px) {
+  .nav-menu {
+    justify-content: flex-start;
+    gap: var(--space-3xs);
+    padding: 6.2rem 1.25rem 2rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .nav-profile {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    width: min(100%, 26rem);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .nav-profile__dp {
+    width: 56px;
+    height: 56px;
+    flex: none;
+    border-radius: 50%;
+    border: 1px solid var(--ring-gold);
+    object-fit: cover;
+    object-position: 50% 32%;
+  }
+  .nav-profile__text { display: grid; gap: .15rem; }
+  .nav-profile__text b { color: var(--cream); font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+  .nav-profile__text i { color: var(--gold); font-size: .68rem; font-style: normal; letter-spacing: .1em; }
+
+  .nav-menu a {
+    width: min(100%, 26rem);
+    min-height: 46px;
+    gap: .85rem;
+    padding: .35rem .2rem;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+  }
+  .nav-menu a .icon { width: 1.15rem; height: 1.15rem; opacity: .85; color: var(--gold); }
+  .nav-menu__cta {
+    width: min(100%, 26rem);
+    justify-content: flex-start;
+    margin-top: var(--space-sm);
+    padding: .9rem 1.1rem;
+    font-family: var(--font-body) !important;
+    font-size: .82rem !important;
+    letter-spacing: .08em;
+  }
+  .nav-menu__cta em { margin-left: auto; }
+}
+
+@media (max-width: 380px) {
+  .nav-menu { padding-top: 5.4rem; }
+  .nav-menu a { min-height: 44px; font-size: 1.18rem; }
+  .nav-profile__dp { width: 48px; height: 48px; }
+}
+
+/* ============================================================================
+   HERO — identity strip replaces the unverified performance counters
+   ========================================================================= */
+
+.hero__identity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2xs) var(--space-md);
+  margin: var(--space-lg) 0 0;
+  padding: 0;
+  list-style: none;
+  animation: rise .9s .9s both;
+}
+.hero__identity li {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: #b9b09f;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+.hero__identity .icon { width: 1.05rem; height: 1.05rem; color: var(--gold); stroke-width: 1.4; }
+.hero__identity li + li::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  margin-right: calc(var(--space-md) - .45rem - 3px);
+  border-radius: 50%;
+  background: var(--hairline-warm);
+}
+
+@media (max-width: 560px) {
+  .hero__identity { gap: var(--space-xs) var(--space-sm); }
+  .hero__identity li + li::before { display: none; }
+  .hero__identity li {
+    padding: .3rem .55rem;
+    border: 1px solid var(--hairline);
+    font-size: .58rem;
+  }
+}
+
+/* ============================================================================
+   ARTIST IDENTITY CARD (About)
+   ========================================================================= */
+
+.about .shell > .identity { margin-bottom: var(--section-space); }
+.about__grid { padding-top: 0; border-top: 0; gap: clamp(2.5rem, 6vw, 6rem); }
+
+.identity {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.4rem, 3vw, 2.8rem);
+  padding: clamp(1.2rem, 2.4vw, 2rem);
+  border: 1px solid var(--hairline);
+  border-radius: var(--media-radius);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(214, 168, 79, .07), transparent 58%),
+    var(--surface-2);
+}
+.identity__portrait {
+  position: relative;
+  width: clamp(132px, 14vw, 208px);
+  margin: 0;
+  aspect-ratio: 1;
+}
+.identity__portrait::after {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border: 1px solid var(--ring-gold);
+  border-radius: var(--media-radius);
+  pointer-events: none;
+  transition: inset var(--duration-slow) var(--ease-premium),
+              border-color var(--duration-slow) var(--ease-premium);
+}
+.identity__portrait img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--media-radius);
+  object-fit: cover;
+  object-position: 50% 30%;   /* keeps the face centred inside the square */
+  filter: saturate(.94) contrast(1.04);
+}
+.identity__body { min-width: 0; }
+.identity__body .eyebrow { margin-bottom: var(--space-xs); }
+.identity__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 3.6vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.03em;
+}
+.identity__role {
+  margin: var(--space-xs) 0 0;
+  color: var(--cream-muted);
+  font-size: .74rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.identity__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.identity__facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: var(--cream);
+  font-size: .82rem;
+}
+.identity__facts li:first-child { color: var(--gold-light); font-family: var(--font-display); font-style: italic; font-size: .98rem; }
+.identity__facts .icon { width: 1.05rem; height: 1.05rem; color: var(--gold); }
+.identity__links { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-md); }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 44px;
+  padding: .55rem .95rem;
+  border: 1px solid var(--hairline);
+  border-radius: 2rem;
+  color: var(--cream-muted);
+  font-size: .72rem;
+  letter-spacing: .04em;
+  transition: color var(--duration-medium) var(--ease-premium),
+              border-color var(--duration-medium) var(--ease-premium),
+              background var(--duration-medium) var(--ease-premium);
+}
+.chip .icon { width: 1.05rem; height: 1.05rem; color: var(--gold); }
+.chip--gold { border-color: var(--hairline-warm); color: var(--gold-light); }
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover { color: var(--gold-light); border-color: var(--gold); background: rgba(214, 168, 79, .07); }
+}
+
+@media (max-width: 700px) {
+  .identity { grid-template-columns: 1fr; justify-items: start; gap: var(--space-md); text-align: left; }
+  .identity__portrait { width: 128px; }
+}
+
+/* ============================================================================
+   MUSIC — 3 × 3 editorial grid
+   Nine items divide evenly by three. Any 2-column span leaves a dead cell in
+   the last row, so emphasis is carried by tone instead of by size.
+   ========================================================================= */
+
+.genre-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--grid-gap); }
+.genre-card--feature { grid-column: auto; }
+
+.genre-card {
+  min-height: clamp(178px, 14.5vw, 218px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--card-padding);
+}
+.genre-card__top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+.genre-card__symbol {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  color: var(--gold);
+  transition: color var(--duration-medium) var(--ease-premium),
+              border-color var(--duration-medium) var(--ease-premium),
+              transform var(--duration-medium) var(--ease-premium);
+}
+.genre-card__symbol .icon { width: 1rem; height: 1rem; stroke-width: 1.4; }
+.genre-card__body { position: relative; z-index: 2; }
+.genre-card__body p { margin: 0 0 .35rem; }
+.genre-card h3 {
+  max-width: 15ch;
+  font-size: clamp(1.25rem, 1.75vw, 1.75rem);
+  text-wrap: balance;
+}
+.genre-card--feature h3 { font-size: clamp(1.3rem, 1.85vw, 1.85rem); }
+
+/* The decorative motif is now a corner mark, not a full-bleed canvas. That
+   single change is what removed most of the empty space inside these cards. */
+.genre-card__art {
+  inset: auto -2.4rem -2.6rem auto;
+  width: 11rem;
+  height: 11rem;
+  transform: scale(.56);
+  transform-origin: 100% 100%;
+  opacity: .3;
+}
+.genre-card:hover .genre-card__art { transform: scale(.6) rotate(4deg); opacity: .5; }
+
+@media (hover: hover) and (pointer: fine) {
+  .genre-card:hover .genre-card__symbol {
+    color: var(--gold-light);
+    border-color: var(--hairline-warm);
+    transform: translateY(-2px);
+  }
+  .genre-card:hover { transform: translateY(-3px); }
+}
+
+/* ============================================================================
+   EVENTS — 3 × 3 compact rows
+   The old card was 240px tall around a number and one word.
+   ========================================================================= */
+
+.event-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--grid-gap); }
+.event-card--large, .event-card--wide { grid-column: auto; }
+
+.event-card {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--card-padding);
+}
+.event-card__body { min-width: 0; }
+.event-icon {
+  align-self: center;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--hairline-warm);
+  border-radius: 50%;
+  color: var(--gold);
+  background: rgba(214, 168, 79, .05);
+}
+.event-icon .icon { width: 1.32rem; height: 1.32rem; stroke-width: 1.35; }
+.event-card small { display: block; margin-bottom: .3rem; }
+.event-card h3 {
+  margin: 0;
+  font-size: clamp(1rem, 1.25vw, 1.24rem);
+  line-height: 1.15;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .event-card:hover { transform: translateY(-3px); }
+  .event-card:hover .event-icon {
+    color: var(--gold-light);
+    border-color: var(--gold);
+    background: rgba(214, 168, 79, .1);
+    transform: none;
+  }
+}
+
+/* ============================================================================
+   SECTION HEIGHT DISCIPLINE
+   Every one of these was a fixed min-height taller than its content.
+   ========================================================================= */
+
+.retro { min-height: 0; }
+.retro__content { gap: clamp(2.5rem, 6vw, 6rem); }
+.experience { min-height: 0; }
+.experience__inner > h2 { margin-bottom: var(--content-gap); }
+.experience__flow { gap: var(--space-md); margin-top: clamp(3rem, 5vw, 4.5rem); }
+.finale { min-height: 0; }
+.finale__actions { margin-top: var(--space-xl); }
+.mood-player { min-height: clamp(300px, 30vw, 380px); }
+.social-card { min-height: clamp(240px, 22vw, 300px); padding: clamp(1.3rem, 1.8vw, 1.7rem); }
+.social-card__icon { width: 46px; height: 46px; }
+.social-card__icon .icon { width: 1.35rem; height: 1.35rem; }
+.social-card h3 { font-size: clamp(1.5rem, 2.3vw, 2.2rem); }
+.social-card__arrow { right: 1.4rem; bottom: 1.4rem; }
+.social-grid { gap: var(--grid-gap); }
+
+.form-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin: 0;
+  color: var(--gold);
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.form-heading .icon { width: 1.15em; height: 1.15em; }
+
+.connect__socials a { align-items: center; gap: .5rem; min-height: 44px; }
+.connect__socials .icon { width: 1.05rem; height: 1.05rem; color: var(--gold); }
+.connect__socials a span { margin-left: auto; }
+
+/* ============================================================================
+   ACADEMIES
+   ========================================================================= */
+
+.academies { background: linear-gradient(180deg, var(--surface-0), var(--surface-1)); }
+.academies::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(560px, 60%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hairline-warm), transparent);
+  transform: translateX(-50%);
+}
+.academies__sub {
+  margin: var(--space-sm) 0 0;
+  color: var(--gold-light);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  font-style: italic;
+}
+.academy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+.academy-card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(260px, 26vw, 340px);
+  padding: clamp(1.4rem, 2.2vw, 2.1rem);
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: var(--media-radius);
+  background: var(--surface-2);
+  transition: transform var(--duration-medium) var(--ease-premium),
+              border-color var(--duration-medium) var(--ease-premium),
+              background var(--duration-medium) var(--ease-premium);
+}
+.academy-card--music { background: linear-gradient(150deg, rgba(214, 168, 79, .13), rgba(17, 16, 13, .9) 62%); border-color: rgba(214, 168, 79, .26); }
+.academy-card--dance { background: linear-gradient(150deg, rgba(169, 95, 36, .16), rgba(17, 16, 13, .9) 62%); border-color: rgba(169, 95, 36, .3); }
+
+/* Own graphic language — concentric grooves for music, rhythm arcs for dance.
+   No academy photography exists in the repository and none was invented. */
+.academy-card__art {
+  position: absolute;
+  right: -12%;
+  bottom: -28%;
+  z-index: -1;
+  width: 62%;
+  aspect-ratio: 1;
+  opacity: .3;
+  pointer-events: none;
+  transition: transform var(--duration-slow) var(--ease-premium),
+              opacity var(--duration-slow) var(--ease-premium);
+}
+.academy-card__art i {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: .5;
+}
+.academy-card__art i:nth-child(2) { inset: 16%; }
+.academy-card__art i:nth-child(3) { inset: 32%; }
+.academy-card__art--motion i { border-radius: 50%; border-color: transparent; border-top-color: var(--gold); border-right-color: var(--gold); transform: rotate(-25deg); }
+.academy-card__art--motion i:nth-child(2) { inset: 14%; transform: rotate(15deg); }
+.academy-card__art--motion i:nth-child(3) { inset: 28%; transform: rotate(55deg); }
+
+.academy-card__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--hairline-warm);
+  border-radius: 50%;
+  color: var(--gold-light);
+  transition: transform var(--duration-medium) var(--ease-premium),
+              background var(--duration-medium) var(--ease-premium),
+              color var(--duration-medium) var(--ease-premium);
+}
+.academy-card__icon .icon { width: 1.45rem; height: 1.45rem; }
+.academy-card__label {
+  margin-top: auto;
+  padding-top: var(--space-lg);
+  color: #8f887c;
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.academy-card h3 {
+  margin: .55rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.6vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -.02em;
+  transition: color var(--duration-medium) var(--ease-premium);
+}
+.academy-card__handle {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin-top: var(--space-sm);
+  color: var(--cream-muted);
+  font-size: .74rem;
+  overflow-wrap: anywhere;
+}
+.academy-card__handle .icon { width: 1rem; height: 1rem; flex: none; color: var(--gold); }
+.academy-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--hairline);
+  color: var(--gold-light);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.academy-card__cta span { transition: transform var(--duration-medium) var(--ease-premium); }
+
+@media (hover: hover) and (pointer: fine) {
+  .academy-card:hover { transform: translateY(-3px); border-color: var(--hairline-warm); }
+  .academy-card:hover .academy-card__icon { background: var(--gold); color: var(--ink); transform: scale(1.05); }
+  .academy-card:hover .academy-card__art { transform: scale(1.06) rotate(6deg); opacity: .45; }
+  .academy-card:hover h3 { color: var(--gold-light); }
+  .academy-card:hover .academy-card__cta span { transform: translate(3px, -3px); }
+}
+.academy-card:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+
+@media (max-width: 760px) {
+  .academy-grid { grid-template-columns: 1fr; }
+  .academy-card { min-height: 0; }
+  .academy-card__label { padding-top: var(--space-md); }
+}
+
+/* ============================================================================
+   FOOTER
+   ========================================================================= */
+
+.footer__top {
+  grid-template-columns: 1.5fr 1fr 1.35fr 1.25fr;
+  gap: clamp(1.6rem, 3.4vw, 3rem);
+  padding-block: clamp(2.4rem, 4vw, 3.4rem);
+}
+.footer__identity { gap: var(--space-xs); }
+.footer__profile {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin-top: var(--space-xs);
+}
+.footer__dp {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--ring-gold);
+  object-fit: cover;
+  object-position: 50% 32%;
+}
+.footer__profile-text { display: grid; gap: .1rem; }
+.footer__profile-text b { color: var(--cream); font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; }
+.footer__profile-text i { color: var(--cream-muted); font-size: .68rem; font-style: normal; letter-spacing: .09em; text-transform: uppercase; }
+
+.footer__heading {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin-bottom: var(--space-sm);
+}
+.footer__heading .icon { width: 1em; height: 1em; }
+.footer__nav a, .footer__contact a, .footer__academies a { min-height: 30px; }
+.footer__nav .icon, .footer__academies .icon { width: 1em; height: 1em; flex: none; color: var(--gold); opacity: .8; }
+.footer__academies a { align-items: flex-start; gap: .55rem; }
+.footer__academies a .icon { margin-top: .2rem; }
+.footer__academies span { display: grid; gap: .1rem; }
+.footer__academies span i { color: var(--gold); font-size: .68rem; font-style: normal; letter-spacing: .05em; }
+
+@media (max-width: 900px) {
+  .footer__top { grid-template-columns: 1fr 1fr; row-gap: var(--space-lg); }
+}
+@media (max-width: 560px) {
+  .footer__top { grid-template-columns: 1fr; }
+}
+
+/* ============================================================================
+   LARGE SCREENS
+   Content must not simply stretch. The shell widens in controlled steps and
+   the rhythm stays proportional instead of ballooning into empty bands.
+   ========================================================================= */
+
+@media (min-width: 1800px) {
+  :root { --shell: min(1440px, calc(100% - 96px)); }
+}
+@media (min-width: 2400px) {
+  :root {
+    --shell: min(1560px, calc(100% - 160px));
+    --section-space: clamp(5.5rem, 4.4vw, 8rem);
+  }
+  html { font-size: 17px; }
+}
+@media (min-width: 3200px) {
+  :root { --shell: min(1720px, calc(100% - 220px)); }
+  html { font-size: 18px; }
+}
+
+/* ============================================================================
+   RESPONSIVE — grid geometry
+   Nine-item grids stay on three columns for as long as three columns are
+   legible, then drop straight to one. Two columns would always orphan a card.
+   ========================================================================= */
+
+@media (max-width: 1024px) {
+  .genre-grid, .event-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .genre-card--feature { grid-column: auto; }
+  .genre-card { min-height: 172px; }
+  .genre-card h3 { font-size: 1.2rem; }
+  .event-card { gap: var(--space-sm); }
+  .event-card h3 { font-size: .98rem; }
+  .event-icon { width: 40px; height: 40px; }
+  .event-icon .icon { width: 1.15rem; height: 1.15rem; }
+}
+
+@media (max-width: 860px) {
+  /* Events fold to a stacked card so long names keep a readable measure. */
+  .event-card {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: var(--space-sm);
+    min-height: 132px;
+  }
+  .event-icon { justify-self: start; }
+}
+
+@media (max-width: 700px) {
+  .genre-grid, .event-grid { grid-template-columns: 1fr; }
+  .genre-card--feature, .event-card--large, .event-card--wide { grid-column: auto; }
+  .genre-card { min-height: 152px; }
+  .genre-card h3 { font-size: 1.45rem; }
+  .genre-card__art { inset: auto -2rem -2.4rem auto; width: 10rem; height: 10rem; }
+  /* One column: back to the horizontal row, which reads as a tidy list. */
+  .event-card {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    min-height: 0;
+    gap: var(--space-md);
+  }
+  .event-card h3 { font-size: 1.05rem; }
+}
+
+@media (max-width: 480px) {
+  .genre-grid, .event-grid { grid-template-columns: 1fr; }
+  .genre-card { min-height: 144px; }
+  .genre-card h3 { font-size: 1.35rem; }
+  .social-card { min-height: 230px; }
+  .social-card h3 { font-size: 1.7rem; }
+  .rating__option label { width: 46px; height: 46px; }
+}
+
+/* Nothing in this layer may re-introduce a hidden resting state. */
+@media (prefers-reduced-motion: reduce) {
+  .brand__logo, .academy-card, .chip { transition: none; }
+}
+

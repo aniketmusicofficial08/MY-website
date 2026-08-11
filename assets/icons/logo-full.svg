@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 64" width="300" height="64" role="img" aria-labelledby="ap-full-title">
+  <title id="ap-full-title">Aniket Patel &amp; Band</title>
+  <!-- Lock-up: monogram mark + wordmark. Vector throughout. The wordmark uses the
+       site's display family with a Georgia/serif fallback, so it degrades to the same
+       proportions rather than to a different silhouette. -->
+  <g transform="translate(8 8) scale(.9166667)">
+    <circle cx="24" cy="24" r="22" fill="none" stroke="#d6a84f" stroke-width="1.5"/>
+    <circle cx="24" cy="24" r="18.4" fill="none" stroke="#d6a84f" stroke-width=".8" opacity=".32"/>
+    <g fill="none" stroke="#f0d38a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11.5 32 17 16l5.5 16"/>
+      <path d="M13.15 27.2h7.7"/>
+      <path d="M28.5 32V16h4a4 4 0 0 1 0 8h-4"/>
+    </g>
+    <circle cx="26.9" cy="32.9" r="2.1" fill="#d6a84f"/>
+  </g>
+  <text x="70" y="30" fill="#f2ead9"
+        font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif"
+        font-size="23" font-weight="600" letter-spacing="1.6">Aniket Patel</text>
+  <text x="71.5" y="46" fill="#d6a84f"
+        font-family="'DM Sans', Helvetica, Arial, sans-serif"
+        font-size="9.5" font-weight="600" letter-spacing="4.2">&amp; BAND</text>
+</svg>

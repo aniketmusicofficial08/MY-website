@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-labelledby="ap-mark-title">
+  <title id="ap-mark-title">Aniket Patel</title>
+  <!-- Aniket Patel — monogram mark.
+       Geometry only: no text elements, so it renders identically without any font
+       installed and stays crisp at 16px through 256px and at any device pixel ratio.
+       The P's stem carries a note head at its foot, which is the only musical detail
+       small enough to survive a 16px favicon. -->
+  <circle cx="24" cy="24" r="24" fill="#0a0907"/>
+  <circle cx="24" cy="24" r="22" fill="none" stroke="#d6a84f" stroke-width="1.4"/>
+  <circle cx="24" cy="24" r="18.4" fill="none" stroke="#d6a84f" stroke-width=".7" opacity=".32"/>
+  <g fill="none" stroke="#f0d38a" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11.5 32 17 16l5.5 16"/>
+    <path d="M13.15 27.2h7.7"/>
+    <path d="M28.5 32V16h4a4 4 0 0 1 0 8h-4"/>
+  </g>
+  <circle cx="26.9" cy="32.9" r="2" fill="#d6a84f"/>
+</svg>

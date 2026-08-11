@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- Same geometry as assets/icons/logo-mark.svg. Kept as its own file so the existing
+       <link rel="icon"> references across the site and the admin area keep resolving.
+       Text was replaced with drawn paths: at 16px a <text> element depended on whichever
+       serif the OS happened to have. -->
+  <rect width="48" height="48" rx="24" fill="#0a0907"/>
+  <circle cx="24" cy="24" r="22" fill="none" stroke="#d6a84f" stroke-width="1.4"/>
+  <circle cx="24" cy="24" r="18.4" fill="none" stroke="#d6a84f" stroke-width=".7" opacity=".32"/>
+  <g fill="none" stroke="#f0d38a" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11.5 32 17 16l5.5 16"/>
+    <path d="M13.15 27.2h7.7"/>
+    <path d="M28.5 32V16h4a4 4 0 0 1 0 8h-4"/>
+  </g>
+  <circle cx="26.9" cy="32.9" r="2" fill="#d6a84f"/>
+</svg>

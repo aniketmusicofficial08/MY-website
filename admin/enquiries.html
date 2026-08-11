@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0907">
+  <title>New Enquiries | Aniket Patel &amp; Band Admin</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="../js/supabase-config.js"></script>
+</head>
+<body data-page="enquiries">
+  <div class="admin-shell">
+    <aside class="admin-side">
+      <a class="admin-brand" href="index.html">
+        <span class="admin-brand__mark" aria-hidden="true">AP</span>
+        <span class="admin-brand__name">Aniket Patel <i>Admin</i></span>
+      </a>
+      <nav class="admin-nav" aria-label="Admin sections">
+        <a href="index.html">Dashboard</a>
+        <a href="enquiries.html" aria-current="page">New Enquiries <span class="admin-nav__count" data-pending-count hidden>0</span></a>
+        <a href="approved.html">Approved</a>
+        <a href="denied.html">Denied</a>
+        <a href="calendar.html">Calendar</a>
+      </nav>
+      <div class="admin-side__foot">
+        <p class="admin-user" data-admin-email></p>
+        <button class="btn btn--outline btn--full" type="button" data-logout>Logout</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-head">
+        <p class="eyebrow">Pending Review</p>
+        <h1>New <em>Enquiries</em></h1>
+        <p>Showing <span data-count>0</span> enquiries. Pending enquiries do not reserve a date — only approval does.</p>
+      </header>
+
+      <p class="notice" data-notice hidden></p>
+
+      <div class="toolbar">
+        <input type="search" data-search placeholder="Search name, email, phone, location…" aria-label="Search enquiries">
+        <select data-filter-type aria-label="Filter by event type"></select>
+        <select data-sort aria-label="Sort enquiries">
+          <option value="event_asc">Event date — soonest first</option>
+          <option value="event_desc">Event date — latest first</option>
+          <option value="received_desc">Received — newest first</option>
+          <option value="received_asc">Received — oldest first</option>
+        </select>
+      </div>
+
+      <div class="card-list" data-list></div>
+    </main>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

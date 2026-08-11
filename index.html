@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0907">
+  <meta name="description" content="Book Aniket Patel & Band for live music in Ahmedabad, including weddings, corporate events, private parties and celebrations across Gujarat.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Live Music for Weddings &amp; Events in Ahmedabad | Aniket Patel &amp; Band">
+  <meta property="og:description" content="Professional live music for weddings, corporate events, private parties and celebrations in Ahmedabad and across Gujarat.">
+  <meta property="og:url" content="/">
+  <meta property="og:site_name" content="Aniket Patel &amp; Band">
+  <meta property="og:image" content="assets/media/images/aniket-hero-1200.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Live Music for Weddings &amp; Events in Ahmedabad | Aniket Patel &amp; Band">
+  <meta name="twitter:description" content="Professional live music for weddings, events and celebrations in Ahmedabad and across Gujarat.">
+  <meta name="twitter:image" content="assets/media/images/aniket-hero-1200.webp">
+  <title>Live Music for Weddings &amp; Events in Ahmedabad | Aniket Patel &amp; Band</title>
+  <link rel="canonical" href="/">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/booking.css">
+  <link rel="stylesheet" href="css/media.css">
+  <link rel="stylesheet" href="css/redesign.css">
+  <link rel="stylesheet" href="css/identity.css">
+  <!-- No <link rel=preload> for the hero on purpose. The preload scanner resolves
+       imagesizes before layout is settled, so it repeatedly fetched a larger variant
+       than the <img> then selected — wasted bytes plus a console warning. The hero
+       <img> is early in the document and carries fetchpriority="high", which gives the
+       same LCP benefit without the mismatch. -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "Aniket Patel & Band",
+      "alternateName": "animusic_official",
+      "description": "A professional live music group known for soulful, energetic and memorable musical experiences across Gujarat.",
+      "slogan": "Feel the Music",
+      "email": "patelaniket3028@gmail.com",
+      "telephone": "+918866566520",
+      "logo": "assets/icons/logo-mark.svg",
+      "image": "assets/media/images/aniket-profile-1024.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "member": {
+        "@type": "Person",
+        "name": "Aniket Patel",
+        "jobTitle": "Vocalist / Live Performer",
+        "image": "assets/media/images/aniket-profile-512.webp"
+      },
+      "sameAs": [
+        "https://youtube.com/@animusicofficial-307?si=De13O5ruOvxxQk6u",
+        "https://www.instagram.com/animusic_official?igsh=MWIzY3l6N3ZxNG1vag%3D%3D&utm_source=qr",
+        "https://www.facebook.com/share/1CttujkcfN/?mibextid=wwXIfr"
+      ]
+    }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- ==========================================================================
+       MASTER SYMBOL SYSTEM
+       One sprite for the whole site. Every symbol: 24×24 viewBox (48 for the brand
+       mark), stroke-only, no fills, 1.5 stroke weight applied by .icon, referenced
+       through <use> so it stays vector-sharp at any device pixel ratio.
+       feedback.html carries an identical copy — external <use> references are not
+       reliable across browsers on a build-less static site.
+       ======================================================================= -->
+  <svg class="icon-sprite" aria-hidden="true" focusable="false" width="0" height="0">
+    <defs>
+      <!-- brand mark: geometry only, inherits currentColor -->
+      <symbol id="ap-mark" viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="18.4" fill="none" stroke="currentColor" stroke-width=".8" opacity=".3"/>
+        <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11.5 32 17 16l5.5 16"/>
+          <path d="M13.15 27.2h7.7"/>
+          <path d="M28.5 32V16h4a4 4 0 0 1 0 8h-4"/>
+        </g>
+        <circle cx="26.9" cy="32.9" r="2.1" fill="currentColor"/>
+      </symbol>
+
+      <!-- navigation + section marks -->
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 11.2 12 4l8.5 7.2M5.5 10v10h13V10M9.8 20v-5.6h4.4V20"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.4" r="3.8"/><path d="M4.6 20a7.4 7.4 0 0 1 14.8 0"/></symbol>
+      <symbol id="i-note" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.8"/><circle cx="17.5" cy="16" r="2.8"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></symbol>
+      <symbol id="i-gallery" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M3.4 16.4 8 11.9l3.8 3.8 3-3L20.6 17"/><circle cx="8.6" cy="9.3" r="1.5"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.4 14.3 9.7 20.6 12l-6.3 2.3L12 20.6l-2.3-6.3L3.4 12l6.3-2.3z"/></symbol>
+      <symbol id="i-share" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.6"/><circle cx="17" cy="6" r="2.6"/><circle cx="17" cy="18" r="2.6"/><path d="m8.4 10.8 6.2-3.6M8.4 13.2l6.2 3.6"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.6 2.5 5.6 6.1.6-4.6 4 1.4 6-5.4-3.2-5.4 3.2 1.4-6-4.6-4 6.1-.6z"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M6 18 18 6M9 6h9v9"/></symbol>
+
+      <!-- contact -->
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/></symbol>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24">
+        <path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.5L3.5 20.5l1.5-4.3A8.5 8.5 0 1 1 20.5 11.6Z"/>
+        <path d="M8.8 8.4c.3-.7.6-.7 1-.7h.6c.2 0 .4 0 .6.5l.7 1.7c.1.2 0 .4-.1.5l-.5.6c-.1.2-.2.3 0 .6a7 7 0 0 0 2.9 2.5c.3.1.4 0 .6-.1l.6-.7c.2-.2.3-.2.5-.1l1.6.8c.3.1.4.2.4.4a2 2 0 0 1-1.3 1.7c-.6.2-1.4.3-3.6-.7a9 9 0 0 1-3.9-3.9c-.8-1.6-.5-2.6-.1-3.1Z"/>
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6.5 9 6 9-6"/></symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9"/></symbol>
+      <symbol id="i-location" viewBox="0 0 24 24"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+      <symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10.2 9.2 15.2 12l-5 2.8z"/></symbol>
+      <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M15.5 21v-8.5h2.8l.5-3.1h-3.3V7.5c0-.9.4-1.5 1.8-1.5h1.6V3.2A21 21 0 0 0 15.9 3c-2.6 0-4.3 1.5-4.3 4.3v2.1H8.7v3.1h2.9V21"/></symbol>
+
+      <!-- media + interface -->
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M9 6.3 18 12l-9 5.7z"/></symbol>
+      <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2.5 12h2l1.6-5.5 2 11.5 2-14 2 16.5 2-11 1.6 2.5h5.8"/></symbol>
+      <symbol id="i-message" viewBox="0 0 24 24"><path d="M20.5 15.5a1.5 1.5 0 0 1-1.5 1.5H8l-3.5 3.2V17H5a1.5 1.5 0 0 1-1.5-1.5V6A1.5 1.5 0 0 1 5 4.5h14A1.5 1.5 0 0 1 20.5 6z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.6 4.6 4.6L19 6.8"/></symbol>
+      <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M4 8.6A1.6 1.6 0 0 1 5.6 7h12.8A1.6 1.6 0 0 1 20 8.6v1.6a2 2 0 0 0 0 3.6v1.6a1.6 1.6 0 0 1-1.6 1.6H5.6A1.6 1.6 0 0 1 4 15.4v-1.6a2 2 0 0 0 0-3.6z"/><path d="M14 7.6v1.8M14 11.1v1.8M14 14.6v1.8"/></symbol>
+
+      <!-- music vocabulary -->
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M2.6 12H5M19 12h2.4M5.4 5.4 7.1 7.1M16.9 16.9l1.7 1.7M18.6 5.4l-1.7 1.7M7.1 16.9l-1.7 1.7"/></symbol>
+      <symbol id="i-vinyl" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="4.6"/><circle cx="12" cy="12" r="1.1"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20S4 15.5 4 9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 3.5C20 15.5 12 20 12 20Z"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.8A8.6 8.6 0 0 1 9.2 3.8a8.6 8.6 0 1 0 11 11Z"/></symbol>
+      <symbol id="i-staff" viewBox="0 0 24 24"><path d="M3.5 6.5h17M3.5 11h17M3.5 15.5h17"/><circle cx="8.5" cy="15.5" r="1.9"/><path d="M10.4 15.5V7.2"/></symbol>
+      <symbol id="i-strings" viewBox="0 0 24 24"><path d="M5.4 3.5v17M9.8 3.5v17M14.2 3.5v17M18.6 3.5v17"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.6 2.8 6 13.4h5L10.4 21.2 18 10.6h-5z"/></symbol>
+      <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4.6 15.4v-3.2a7.4 7.4 0 0 1 14.8 0v3.2"/><path d="M4.6 14.2h2.2v5.6H6a1.4 1.4 0 0 1-1.4-1.4zM19.4 14.2h-2.2v5.6H18a1.4 1.4 0 0 0 1.4-1.4z"/></symbol>
+      <symbol id="i-motion" viewBox="0 0 24 24"><circle cx="14.2" cy="4.6" r="2.1"/><path d="m14.2 7 -2.7 5.4 3.7 2.6.6 5.6M11.5 12.4 7.3 10.5M15.2 15l4.2 4.6M4.8 5.2a8.4 8.4 0 0 0-.4 12.4"/></symbol>
+
+      <!-- occasions -->
+      <symbol id="i-rings" viewBox="0 0 24 24"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M4 8h16v11H4zM9 8V5h6v3M4 12h16M10 12v2h4v-2"/></symbol>
+      <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM18 16l.8 2.2L21 19l-2.2.8L18 22l-.8-2.2L15 19l2.2-.8z"/></symbol>
+      <symbol id="i-cake" viewBox="0 0 24 24"><path d="M5 11h14v9H5zM4 15h16M8 8v3M12 8v3M16 8v3M8 5.2h0M12 4.2h0M16 5.2h0"/></symbol>
+      <symbol id="i-diamond" viewBox="0 0 24 24"><path d="m12 3 8 9-8 9-8-9zM8 12h8M12 7v10"/></symbol>
+      <symbol id="i-burst" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/><circle cx="12" cy="12" r="4"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__mark">
+      <svg class="preloader__logo" viewBox="0 0 48 48" aria-hidden="true"><use href="#ap-mark"/></svg>
+      <div class="preloader__bars"><i></i><i></i><i></i><i></i><i></i></div>
+      <span class="preloader__caption">Tuning the moment</span>
+    </div>
+  </div>
+
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__orb ambient__orb--one"></div>
+    <div class="ambient__orb ambient__orb--two"></div>
+    <div class="ambient__grain"></div>
+  </div>
+
+  <header class="site-header" data-header>
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#home" aria-label="Aniket Patel and Band, home">
+        <svg class="brand__logo" viewBox="0 0 48 48" aria-hidden="true"><use href="#ap-mark"/></svg>
+        <span class="brand__name">Aniket Patel <i>&amp; Band</i></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+        <span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <div class="nav-profile" aria-hidden="true">
+          <img class="nav-profile__dp"
+               src="assets/media/images/aniket-profile-256.webp"
+               srcset="assets/media/images/aniket-profile-256.webp 256w,
+                       assets/media/images/aniket-profile-512.webp 512w"
+               sizes="72px" width="256" height="256" alt="" loading="lazy" decoding="async">
+          <span class="nav-profile__text">
+            <b>Aniket Patel</b>
+            <i>@animusic_official</i>
+          </span>
+        </div>
+        <a href="#home"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a>
+        <a href="#about"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><span>About</span></a>
+        <a href="#music"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg><span>Music</span></a>
+        <a href="#events"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>Events</span></a>
+        <a href="ahmedabad-live-singer-band.html"><svg class="icon" aria-hidden="true"><use href="#i-location"/></svg><span>Ahmedabad</span></a>
+        <a href="#experience"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg><span>Experience</span></a>
+        <a href="feedback.html"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>Feedback</span></a>
+        <a href="#social"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg><span>Social</span></a>
+        <a class="nav-menu__cta" href="#connect"><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg><span>Connect</span> <em aria-hidden="true">↗</em></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero__stage" aria-hidden="true">
+        <div class="hero__beam hero__beam--left"></div>
+        <div class="hero__beam hero__beam--right"></div>
+        <div class="frequency-lines">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <div class="hero__content hero__grid shell">
+        <div class="hero__copy">
+          <p class="eyebrow eyebrow--sym hero__eyebrow"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg> Aniket Patel &amp; Band · Ahmedabad</p>
+          <h1 id="hero-title" class="title-reveal hero__title--seo">
+            <span class="title-line"><span>Live Singer &amp; Band</span></span>
+            <span class="title-line"><em>in Ahmedabad</em></span>
+            <span class="title-line"><span>for Weddings, Events &amp; Celebrations</span></span>
+          </h1>
+          <p class="hero__lede">Aniket Patel &amp; Band<br><em>Feel the Music</em></p>
+          <p class="hero__tagline"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg> Feel the Music</p>
+          <p class="hero__support">Golden-era Bollywood, soulful melodies, and an energetic live band experience—curated for celebrations across Gujarat.</p>
+          <div class="hero__actions">
+            <a class="button button--gold" href="#connect">Book A Performance <span aria-hidden="true">↗</span></a>
+            <a class="button button--outline" href="#live">Watch Performance <span aria-hidden="true">↘</span></a>
+            <a class="button button--ghost" href="https://wa.me/918866566520" target="_blank" rel="noopener noreferrer" aria-label="Message Aniket Patel on WhatsApp (opens in a new tab)">
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp
+            </a>
+          </div>
+          <!-- Identity strip. Replaces the previous "10+ years / 1000+ performances"
+               counters: those were unverified performance claims with nothing in the
+               project data behind them. Everything below is stated fact about who the
+               artist is, not a number about what he has done. -->
+          <ul class="hero__identity" aria-label="Artist identity">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg> Vocalist</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg> Live Performer</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-wave"/></svg> Live Band</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-location"/></svg> Ahmedabad</li>
+          </ul>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__halo" aria-hidden="true"></div>
+          <figure class="hero__portrait">
+            <img src="assets/media/images/aniket-hero-1200.webp"
+                 srcset="assets/media/images/aniket-hero-480.webp 480w,
+                         assets/media/images/aniket-hero-768.webp 768w,
+                         assets/media/images/aniket-hero-1200.webp 1200w,
+                         assets/media/images/aniket-hero-1600.webp 1600w,
+                         assets/media/images/aniket-hero-1960.webp 1960w"
+                 sizes="(max-width: 768px) 88vw, (max-width: 1024px) 44vw, (max-width: 1920px) 38vw, 800px"
+                 width="1960" height="3480"
+                 alt="Aniket Patel performing live, seated with a guitar at a microphone"
+                 fetchpriority="high" decoding="async">
+          </figure>
+          <div class="hero__visual-frame" aria-hidden="true"></div>
+          <div class="hero__visual-caption" aria-hidden="true"><span>01</span><p>Professional<br>Live Music</p></div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to learn about the band"><span>Scroll to listen</span><i></i></a>
+    </section>
+
+    <section class="marquee-strip" aria-label="Music styles">
+      <div class="marquee-strip__track">
+        <span>Retro Classics</span><i>◆</i><span>Soulful Melodies</span><i>◆</i><span>Bollywood Unplugged</span><i>◆</i><span>Ghazal</span><i>◆</i><span>Sufi</span><i>◆</i><span>Retro Classics</span><i>◆</i><span>Soulful Melodies</span><i>◆</i><span>Bollywood Unplugged</span><i>◆</i><span>Ghazal</span><i>◆</i><span>Sufi</span><i>◆</i>
+      </div>
+    </section>
+
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <div class="shell">
+        <!-- Artist identity card. The DP is a square derivative of the existing hero
+             photograph — same source file, cropped and re-encoded, original untouched. -->
+        <article class="identity" data-reveal>
+          <figure class="identity__portrait">
+            <img src="assets/media/images/aniket-profile-512.webp"
+                 srcset="assets/media/images/aniket-profile-256.webp 256w,
+                         assets/media/images/aniket-profile-512.webp 512w,
+                         assets/media/images/aniket-profile-768.webp 768w,
+                         assets/media/images/aniket-profile-1024.webp 1024w"
+                 sizes="(max-width: 700px) 132px, (max-width: 1024px) 168px, 208px"
+                 width="1024" height="1024" loading="lazy" decoding="async"
+                 alt="Portrait of Aniket Patel singing at a microphone">
+          </figure>
+          <div class="identity__body">
+            <p class="eyebrow eyebrow--sym"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg> The Artist</p>
+            <h2 class="identity__name">Aniket Patel</h2>
+            <p class="identity__role">Vocalist / Live Performer · Musician &amp; Band</p>
+            <ul class="identity__facts">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg> Feel the Music</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-location"/></svg> Ahmedabad, Gujarat</li>
+            </ul>
+            <div class="identity__links">
+              <a class="chip chip--gold" href="https://www.instagram.com/animusic_official?igsh=MWIzY3l6N3ZxNG1vag%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile animusic_official (opens in a new tab)">
+                <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg> @animusic_official <span aria-hidden="true">↗</span>
+              </a>
+              <a class="chip" href="#academies">
+                <svg class="icon" aria-hidden="true"><use href="#i-headphones"/></svg> Also owner of the Suket academies <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="about__grid">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow eyebrow--sym"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg> The Story in Every Note</p>
+            <h2 id="about-title" class="title-reveal"><span class="title-line"><span>Professional Live Music</span></span><span class="title-line"><em>in Ahmedabad.</em></span></h2>
+          </div>
+          <div class="about__copy" data-reveal>
+            <p class="lead">Aniket Patel &amp; Band is a professional live music group known for creating soulful, energetic, and memorable musical experiences across Gujarat.</p>
+            <p>From evergreen romantic songs to Sufi, Ghazal, Bollywood unplugged, peppy numbers, and contemporary favourites, the music is curated to match the mood of every occasion.</p>
+            <div class="about__tags" aria-label="Performance qualities">
+              <span>Professional Musicianship</span><span>Engaging Stage Presence</span><span>Quality Live Entertainment</span>
+            </div>
+          </div>
+          <figure class="about__portrait" data-reveal>
+            <img src="assets/media/images/aniket-portrait-768.webp"
+                 srcset="assets/media/images/aniket-portrait-480.webp 480w,
+                         assets/media/images/aniket-portrait-768.webp 768w,
+                         assets/media/images/aniket-portrait-895.webp 895w"
+                 sizes="(max-width: 768px) 88vw, 34vw"
+                 width="895" height="1280"
+                 alt="Aniket Patel singing at a microphone during a live performance"
+                 loading="lazy" decoding="async">
+            <figcaption><span aria-hidden="true">—</span> Live, every note played in the room</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="music section" id="music" aria-labelledby="music-title">
+      <div class="shell">
+        <div class="section-heading section-heading--split" data-reveal>
+          <div><p class="eyebrow eyebrow--sym"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg> The Musical Experience</p><h2 id="music-title" class="title-reveal"><span class="title-line"><span>Bollywood &amp; Retro Singer</span></span><span class="title-line"><em>in Ahmedabad.</em></span></h2></div>
+          <p>From the nostalgic charm of old Bollywood to the pulse of an energetic live band experience.</p>
+        </div>
+        <!-- 9 categories on a strict 3 × 3 editorial grid. No card spans two columns:
+             with nine items a span always leaves a dead cell in the final row. Card 01
+             is emphasised through tone, not through size. -->
+        <div class="genre-grid">
+          <article class="genre-card genre-card--feature" data-reveal>
+            <div class="genre-card__top">
+              <span class="genre-card__index">01</span>
+              <span class="genre-card__symbol" aria-hidden="true"><svg class="icon"><use href="#i-sun"/></svg></span>
+            </div>
+            <div class="genre-card__art genre-card__art--sun" aria-hidden="true"><i></i></div>
+            <div class="genre-card__body"><p>Timeless &amp; iconic</p><h3>Golden Era Bollywood</h3></div>
+          </article>
+          <article class="genre-card" data-reveal>
+            <div class="genre-card__top"><span class="genre-card__index">02</span><span class="genre-card__symbol" aria-hidden="true"><svg class="icon"><use href="#i-vinyl"/></svg></span></div>
+            <div class="genre-card__art genre-card__art--rings" aria-hidden="true"><i></i></div>
+            <div class="genre-card__body"><p>Evergreen nostalgia</p><h3>Retro Classics</h3></div>
+          </article>
+          <article class="genre-card" data-reveal>
+            <div class="genre-card__top"><span class="genre-card__index">03</span><span class="genre-card__symbol" aria-hidden="true"><svg class="icon"><use href="#i-wave"/></svg></span></div>
+            <div class="genre-card__art genre-card__art--wave" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="genre-card__body"><p>Music that moves</p><h3>Soulful Melodies</h3></div>
+          </article>
+          <article class="genre-card" data-reveal>
+            <div class="genre-card__top"><span class="genre-card__index">04</span><span class="genre-card__symbol" aria-hidden="true"><svg class="icon"><use href="#i-heart"/></svg></span></div>
+            <div class="genre-card__art genre-card__art--heart" aria-hidden="true"><i></i></div>
+            <div class="genre-card__body"><p>Love, in every lyric</p><h3>Evergreen Romantic Songs</h3></div>
+          </article>
+          <article class="genre-card genre-card--dark" data-reveal>
+            <div class="genre-card__top"><span class="genre-card__index">05</span><span class="genre-card__symbol" aria-hidden="true"><svg class="icon"><use href="#i-moon"/></svg></span></div>
+            <div class="genre-card__art genre-card__art--moon" aria-hidden="true"><i></i></div>
+            <div class="genre-card__body"><p>Spiritual expression</p><h3>Sufi</h3></div>
+          </article>
+          <article class="genre-card genre-card--dark" data-reveal>
+            <div class="genre-card__top"><span class="genre-card__index">06</span><span class="genre-card__symbol" aria-hidden="true"><svg class="icon"><use href="#i-staff"/></svg></span></div>
+            <div class="genre-card__art genre-card__art--lines" aria-hidden="true"><i></i></div>
+            <div class="genre-card__body"><p>Poetry in sound</p><h3>Ghazal</h3></div>
+          </article>
+          <article class="genre-card" data-reveal>
+            <div class="genre-card__top"><span class="genre-card__index">07</span><span class="genre-card__symbol" aria-hidden="true"><svg class="icon"><use href="#i-strings"/></svg></span></div>
+            <div class="genre-card__art genre-card__art--strings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <div class="genre-card__body"><p>Intimate &amp; honest</p><h3>Bollywood Unplugged</h3></div>
+          </article>
+          <article class="genre-card" data-reveal>
+            <div class="genre-card__top"><span class="genre-card__index">08</span><span class="genre-card__symbol" aria-hidden="true"><svg class="icon"><use href="#i-bolt"/></svg></span></div>
+            <div class="genre-card__art genre-card__art--burst" aria-hidden="true"><i></i></div>
+            <div class="genre-card__body"><p>Rhythm &amp; energy</p><h3>Peppy Numbers</h3></div>
+          </article>
+          <article class="genre-card" data-reveal>
+            <div class="genre-card__top"><span class="genre-card__index">09</span><span class="genre-card__symbol" aria-hidden="true"><svg class="icon"><use href="#i-headphones"/></svg></span></div>
+            <div class="genre-card__art genre-card__art--orbit" aria-hidden="true"><i></i></div>
+            <div class="genre-card__body"><p>Today's sound</p><h3>Contemporary Favourites</h3></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="retro section" aria-labelledby="retro-title">
+      <div class="retro__rings" aria-hidden="true"></div>
+      <div class="shell retro__content">
+        <div class="retro__record" aria-hidden="true">
+          <div class="retro__record-label"><span>THE GOLDEN</span><b>AP</b><span>ERA</span></div>
+        </div>
+        <div class="retro__copy" data-reveal>
+          <p class="eyebrow eyebrow--sym"><svg class="icon" aria-hidden="true"><use href="#i-vinyl"/></svg> A Tribute to Timeless Music</p>
+          <h2 id="retro-title" class="title-reveal"><span class="title-line"><span>Golden Era</span></span><span class="title-line"><em>Bollywood Music.</em></span></h2>
+          <p>At the heart of the band's speciality are timeless classics by Kishore Kumar, Mohammed Rafi, Mukesh, and other iconic voices of the retro era.</p>
+          <div class="legend-list"><span>Kishore Kumar</span><span>Mohammed Rafi</span><span>Mukesh</span><span>Other iconic voices</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="events section" id="events" aria-labelledby="events-title">
+      <div class="shell">
+        <div class="section-heading section-heading--split" data-reveal>
+          <div><p class="eyebrow eyebrow--sym"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg> Every Occasion, Its Own Rhythm</p><h2 id="events-title" class="title-reveal"><span class="title-line"><span>Live Music for Weddings</span></span><span class="title-line"><em>&amp; Events in Ahmedabad.</em></span></h2></div>
+          <p>Professional live music, thoughtfully curated to match the mood of your occasion.</p>
+        </div>
+        <!-- Compact 3 × 3. The old cards were 240px tall around a number and one word;
+             the row card is sized to its content instead. -->
+        <div class="event-grid">
+          <article class="event-card" data-reveal><span class="event-icon" aria-hidden="true"><svg class="icon"><use href="#i-rings"/></svg></span><div class="event-card__body"><small>01</small><h3>Weddings</h3></div></article>
+          <article class="event-card" data-reveal><span class="event-icon" aria-hidden="true"><svg class="icon"><use href="#i-briefcase"/></svg></span><div class="event-card__body"><small>02</small><h3>Corporate Events</h3></div></article>
+          <article class="event-card" data-reveal><span class="event-icon" aria-hidden="true"><svg class="icon"><use href="#i-sparkle"/></svg></span><div class="event-card__body"><small>03</small><h3>Private Parties</h3></div></article>
+          <article class="event-card" data-reveal><span class="event-icon" aria-hidden="true"><svg class="icon"><use href="#i-cake"/></svg></span><div class="event-card__body"><small>04</small><h3>Birthdays</h3></div></article>
+          <article class="event-card" data-reveal><span class="event-icon" aria-hidden="true"><svg class="icon"><use href="#i-heart"/></svg></span><div class="event-card__body"><small>05</small><h3>Anniversaries</h3></div></article>
+          <article class="event-card" data-reveal><span class="event-icon" aria-hidden="true"><svg class="icon"><use href="#i-home"/></svg></span><div class="event-card__body"><small>06</small><h3>Housewarming Ceremonies</h3></div></article>
+          <article class="event-card" data-reveal><span class="event-icon" aria-hidden="true"><svg class="icon"><use href="#i-note"/></svg></span><div class="event-card__body"><small>07</small><h3>Clubs</h3></div></article>
+          <article class="event-card" data-reveal><span class="event-icon" aria-hidden="true"><svg class="icon"><use href="#i-diamond"/></svg></span><div class="event-card__body"><small>08</small><h3>Cultural Events</h3></div></article>
+          <article class="event-card" data-reveal><span class="event-icon" aria-hidden="true"><svg class="icon"><use href="#i-burst"/></svg></span><div class="event-card__body"><small>09</small><h3>Special Celebrations</h3></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mood section" aria-labelledby="mood-title">
+      <div class="shell mood__shell">
+        <div class="section-heading" data-reveal><p class="eyebrow eyebrow--sym"><svg class="icon" aria-hidden="true"><use href="#i-wave"/></svg> Set the Tone</p><h2 id="mood-title" class="title-reveal"><span class="title-line"><span>Match the</span></span><span class="title-line"><em>mood.</em></span></h2></div>
+        <div class="mood-player" data-reveal>
+          <div class="mood-player__visual" aria-hidden="true">
+            <div class="mood-player__disc"><span>SOULFUL</span></div>
+            <div class="mood-player__wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="mood-player__copy" aria-live="polite">
+            <span class="mood-player__number">01 / 08</span>
+            <h3>Soulful</h3>
+            <p>Melodies chosen for moments that call for feeling, warmth, and connection.</p>
+          </div>
+        </div>
+        <div class="mood-tabs" role="tablist" aria-label="Choose a musical mood">
+          <button class="is-active" type="button" role="tab" aria-selected="true" data-mood="soulful">Soulful</button>
+          <button type="button" role="tab" aria-selected="false" data-mood="romantic">Romantic</button>
+          <button type="button" role="tab" aria-selected="false" data-mood="retro">Retro</button>
+          <button type="button" role="tab" aria-selected="false" data-mood="sufi">Sufi</button>
+          <button type="button" role="tab" aria-selected="false" data-mood="ghazal">Ghazal</button>
+          <button type="button" role="tab" aria-selected="false" data-mood="unplugged">Unplugged</button>
+          <button type="button" role="tab" aria-selected="false" data-mood="energetic">Energetic</button>
+          <button type="button" role="tab" aria-selected="false" data-mood="contemporary">Contemporary</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience section" id="experience" aria-labelledby="experience-title">
+      <div class="experience__glow" aria-hidden="true"></div>
+      <div class="shell experience__inner">
+        <p class="eyebrow eyebrow--sym" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg> More Than a Performance</p>
+        <h2 id="experience-title" class="title-reveal" data-reveal><span class="title-line"><span>A live experience</span></span><span class="title-line"><span>that stays <em>with you.</em></span></span></h2>
+        <figure class="experience__media" data-reveal>
+          <img src="assets/media/images/band-live-1200.webp"
+               srcset="assets/media/images/band-live-768.webp 768w,
+                       assets/media/images/band-live-1200.webp 1200w,
+                       assets/media/images/band-live-1600.webp 1600w,
+                       assets/media/images/band-live-1920.webp 1920w"
+               sizes="(max-width: 768px) 94vw, 88vw"
+               width="4160" height="3120" loading="lazy" decoding="async"
+               alt="Aniket Patel &amp; Band performing on stage at night with the full line-up">
+          <figcaption class="experience__words" aria-hidden="true">
+            <b>Soulful</b><b>Energetic</b><b>Memorable</b>
+          </figcaption>
+        </figure>
+
+        <div class="experience__flow">
+          <div class="experience__line" aria-hidden="true"></div>
+          <article data-reveal><span>01</span><h3>Soulful</h3><p>Timeless melodies and nostalgic old Bollywood.</p></article>
+          <article data-reveal><span>02</span><h3>Energetic</h3><p>The unmistakable energy of a live band experience.</p></article>
+          <article data-reveal><span>03</span><h3>Professional</h3><p>Professional musicianship and an engaging stage presence.</p></article>
+          <article data-reveal><span>04</span><h3>Memorable</h3><p>Quality live entertainment made for celebration.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="showreel section" id="live" aria-labelledby="showreel-title">
+      <div class="shell">
+        <div class="section-heading section-heading--split" data-reveal>
+          <div>
+            <p class="eyebrow eyebrow--sym"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> Live In Motion</p>
+            <h2 id="showreel-title" class="title-reveal"><span class="title-line"><span>Watch Live</span></span><span class="title-line"><em>Performances.</em></span></h2>
+          </div>
+          <p>Filmed at real performances. Select a clip to play it — nothing loads until you do.</p>
+        </div>
+
+        <div class="showreel__grid">
+          <button class="reel reel--feature" type="button" data-reveal
+                  data-video="assets/media/videos/performance-01.mp4"
+                  data-poster="assets/media/posters/performance-01.webp"
+                  data-label="Live on stage">
+            <img src="assets/media/posters/performance-01.webp" width="540" height="960" loading="lazy" decoding="async"
+                 alt="Aniket Patel &amp; Band performing on an outdoor stage in the evening">
+            <span class="reel__play" aria-hidden="true"></span>
+            <span class="reel__meta"><b>Live on stage</b><i>Performance</i></span>
+          </button>
+
+          <button class="reel" type="button" data-reveal
+                  data-video="assets/media/videos/performance-02.mp4"
+                  data-poster="assets/media/posters/performance-02.webp"
+                  data-label="With the crowd">
+            <img src="assets/media/posters/performance-02.webp" width="540" height="960" loading="lazy" decoding="async"
+                 alt="A crowd gathered in front of the stage during a live performance">
+            <span class="reel__play" aria-hidden="true"></span>
+            <span class="reel__meta"><b>With the crowd</b><i>Performance</i></span>
+          </button>
+
+          <button class="reel" type="button" data-reveal
+                  data-video="assets/media/videos/performance-03.mp4"
+                  data-poster="assets/media/posters/performance-03.webp"
+                  data-label="At a celebration">
+            <img src="assets/media/posters/performance-03.webp" width="540" height="960" loading="lazy" decoding="async"
+                 alt="Aniket Patel &amp; Band performing at an indoor celebration">
+            <span class="reel__play" aria-hidden="true"></span>
+            <span class="reel__meta"><b>At a celebration</b><i>Performance</i></span>
+          </button>
+
+          <button class="reel" type="button" data-reveal
+                  data-video="assets/media/videos/performance-04.mp4"
+                  data-poster="assets/media/posters/performance-04.webp"
+                  data-label="Close to the song">
+            <img src="assets/media/posters/performance-04.webp" width="540" height="960" loading="lazy" decoding="async"
+                 alt="Aniket Patel singing at a microphone">
+            <span class="reel__play" aria-hidden="true"></span>
+            <span class="reel__meta"><b>Close to the song</b><i>Performance</i></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery section" id="gallery" aria-labelledby="gallery-title">
+      <div class="shell">
+        <div class="section-heading section-heading--split" data-reveal>
+          <div>
+            <p class="eyebrow eyebrow--sym"><svg class="icon" aria-hidden="true"><use href="#i-gallery"/></svg> Moments On Stage</p>
+            <h2 id="gallery-title" class="title-reveal"><span class="title-line"><span>Nights that</span></span><span class="title-line"><em>stayed with people.</em></span></h2>
+          </div>
+          <p>Photographs from live performances across Gujarat.</p>
+        </div>
+
+        <div class="gallery__mosaic">
+          <button class="shot shot--tall" type="button" data-reveal data-shot="0"
+                  data-full="assets/media/images/aniket-hero-1600.webp"
+                  data-caption="Aniket Patel performing live">
+            <img src="assets/media/images/aniket-hero-768.webp" width="1960" height="3480" loading="lazy" decoding="async"
+                 alt="Aniket Patel performing live, seated with a guitar at a microphone">
+          </button>
+
+          <button class="shot shot--wide" type="button" data-reveal data-shot="1"
+                  data-full="assets/media/images/band-live-1920.webp"
+                  data-caption="Aniket Patel &amp; Band performing live">
+            <img src="assets/media/images/band-live-1200.webp"
+                 srcset="assets/media/images/band-live-768.webp 768w,
+                         assets/media/images/band-live-1200.webp 1200w,
+                         assets/media/images/band-live-1600.webp 1600w,
+                         assets/media/images/band-live-1920.webp 1920w"
+                 sizes="(max-width: 560px) 92vw, (max-width: 768px) 92vw, 46vw"
+                 width="4160" height="3120" loading="lazy" decoding="async"
+                 alt="Aniket Patel &amp; Band performing on stage at night with the full line-up">
+          </button>
+
+          <button class="shot" type="button" data-reveal data-shot="2"
+                  data-full="assets/media/images/aniket-portrait-895.webp"
+                  data-caption="Aniket Patel performing live">
+            <img src="assets/media/images/aniket-portrait-768.webp" width="895" height="1280" loading="lazy" decoding="async"
+                 alt="Aniket Patel singing at a microphone during a live performance">
+          </button>
+
+          <button class="shot" type="button" data-reveal data-shot="3"
+                  data-full="assets/media/images/crowd-live-1179.webp"
+                  data-caption="A live audience at an Aniket Patel &amp; Band performance">
+            <img src="assets/media/images/crowd-live-768.webp"
+                 srcset="assets/media/images/crowd-live-480.webp 480w,
+                         assets/media/images/crowd-live-768.webp 768w,
+                         assets/media/images/crowd-live-1179.webp 1179w"
+                 sizes="(max-width: 560px) 92vw, (max-width: 768px) 46vw, 23vw"
+                 width="1179" height="676" loading="lazy" decoding="async"
+                 alt="An audience dancing in front of the stage during a live performance">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="social section" id="social" aria-labelledby="social-title">
+      <div class="shell">
+        <div class="section-heading section-heading--center" data-reveal><p class="eyebrow eyebrow--sym"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg> Watch &amp; Follow</p><h2 id="social-title" class="title-reveal"><span class="title-line"><span>The music</span></span><span class="title-line"><em>continues online.</em></span></h2></div>
+        <div class="social-grid">
+          <a class="social-card social-card--youtube" href="https://youtube.com/@animusicofficial-307?si=De13O5ruOvxxQk6u" target="_blank" rel="noopener noreferrer" aria-label="Watch Aniket Patel and Band performances on YouTube (opens in a new tab)" data-reveal>
+            <span class="social-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-youtube"/></svg></span><span class="social-card__label">YouTube</span><h3>Watch<br>Performances</h3><span class="social-card__arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="social-card social-card--instagram" href="https://www.instagram.com/animusic_official?igsh=MWIzY3l6N3ZxNG1vag%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Follow Aniket Patel and Band on Instagram (opens in a new tab)" data-reveal>
+            <span class="social-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-instagram"/></svg></span><span class="social-card__label">Instagram</span><h3>Follow Aniket<br>Patel &amp; Band</h3><span class="social-card__arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="social-card social-card--facebook" href="https://www.facebook.com/share/1CttujkcfN/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Connect with Aniket Patel and Band on Facebook (opens in a new tab)" data-reveal>
+            <span class="social-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-facebook"/></svg></span><span class="social-card__label">Facebook</span><h3>Connect on<br>Facebook</h3><span class="social-card__arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="finale section" aria-labelledby="finale-title">
+      <div class="finale__wave" aria-hidden="true"></div>
+      <div class="shell finale__inner" data-reveal>
+        <p class="eyebrow">Your Celebration. Your Soundtrack.</p>
+        <h2 id="finale-title" class="title-reveal"><span class="title-line"><span>Let The Music Make Your</span></span><span class="title-line"><span>Celebration <em>Unforgettable.</em></span></span></h2>
+        <div class="finale__actions">
+          <a class="button button--dark" href="#connect">Book A Performance <span aria-hidden="true">↗</span></a>
+          <a class="button button--outline-dark" href="https://youtube.com/@animusicofficial-307?si=De13O5ruOvxxQk6u" target="_blank" rel="noopener noreferrer">Explore YouTube <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="connect section" id="connect" aria-labelledby="connect-title">
+      <div class="shell connect__grid">
+        <div class="connect__intro" data-reveal>
+          <p class="eyebrow eyebrow--sym"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg> Start a Conversation</p>
+          <h2 id="connect-title" class="title-reveal"><span class="title-line"><span>Book Aniket Patel &amp; Band</span></span><span class="title-line"><em>in Ahmedabad.</em></span></h2>
+          <p>Planning a wedding, corporate event, private party, or special celebration? Share the occasion below, or reach Aniket directly.</p>
+
+          <p class="connect__label"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg> For Bookings &amp; Collabs</p>
+          <ul class="contact-list">
+            <li>
+              <a href="tel:+918866566520">
+                <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+                <span><b>Phone</b>+91 88665 66520</span>
+                <i class="contact-list__go" aria-hidden="true">↗</i>
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/918866566520" target="_blank" rel="noopener noreferrer" aria-label="Message Aniket Patel on WhatsApp (opens in a new tab)">
+                <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                <span><b>WhatsApp</b>+91 88665 66520</span>
+                <i class="contact-list__go" aria-hidden="true">↗</i>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:patelaniket3028@gmail.com">
+                <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+                <span><b>Email</b>patelaniket3028@gmail.com</span>
+                <i class="contact-list__go" aria-hidden="true">↗</i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/animusic_official?igsh=MWIzY3l6N3ZxNG1vag%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile animusic_official (opens in a new tab)">
+                <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+                <span><b>Instagram</b>@animusic_official</span>
+                <i class="contact-list__go" aria-hidden="true">↗</i>
+              </a>
+            </li>
+            <li class="contact-list__static">
+              <svg class="icon" aria-hidden="true"><use href="#i-location"/></svg>
+              <span><b>Based in</b>Ahmedabad, Gujarat</span>
+            </li>
+          </ul>
+
+          <div class="connect__socials">
+            <a href="https://youtube.com/@animusicofficial-307?si=De13O5ruOvxxQk6u" target="_blank" rel="noopener noreferrer" aria-label="YouTube, opens in a new tab"><svg class="icon" aria-hidden="true"><use href="#i-youtube"/></svg> YouTube <span aria-hidden="true">↗</span></a>
+            <a href="https://www.facebook.com/share/1CttujkcfN/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook, opens in a new tab"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg> Facebook <span aria-hidden="true">↗</span></a>
+            <a href="feedback.html" aria-label="Leave feedback"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg> Feedback <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="booking-shell" data-booking-shell data-state="form">
+        <form class="enquiry-form" data-enquiry-form data-reveal novalidate>
+          <p class="form-heading"><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg> Booking Enquiry</p>
+          <div class="form-row">
+            <label class="field"><span class="field__label">Name</span><input type="text" name="name" autocomplete="name" required placeholder="Your name"></label>
+            <label class="field"><span class="field__label">Phone</span><input type="tel" name="phone" autocomplete="tel" required placeholder="Your phone number"></label>
+          </div>
+          <div class="form-row">
+            <label class="field"><span class="field__label">Email</span><input type="email" name="email" autocomplete="email" required placeholder="your@email.com"></label>
+            <div class="field field--select">
+              <label class="field__label" id="event-type-label" for="event-type-button">Event Type</label>
+              <div class="custom-select" data-custom-select>
+                <button class="custom-select__trigger" id="event-type-button" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="event-type-list" aria-labelledby="event-type-label event-type-value">
+                  <span id="event-type-value">Select an event</span>
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7 5 5 5-5"/></svg>
+                </button>
+                <ul class="custom-select__menu" id="event-type-list" role="listbox" aria-labelledby="event-type-label" tabindex="-1" hidden>
+                  <li role="option" data-value="" aria-selected="true">Select an event</li>
+                  <li role="option" data-value="Weddings" aria-selected="false">Weddings</li>
+                  <li role="option" data-value="Corporate Events" aria-selected="false">Corporate Events</li>
+                  <li role="option" data-value="Private Parties" aria-selected="false">Private Parties</li>
+                  <li role="option" data-value="Birthdays" aria-selected="false">Birthdays</li>
+                  <li role="option" data-value="Anniversaries" aria-selected="false">Anniversaries</li>
+                  <li role="option" data-value="Housewarming Ceremonies" aria-selected="false">Housewarming Ceremonies</li>
+                  <li role="option" data-value="Clubs" aria-selected="false">Clubs</li>
+                  <li role="option" data-value="Cultural Events" aria-selected="false">Cultural Events</li>
+                  <li role="option" data-value="Special Celebrations" aria-selected="false">Special Celebrations</li>
+                </ul>
+                <input type="hidden" name="eventType" value="" data-event-value>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field" data-date-picker>
+              <span class="field__label" id="event-date-label">Event Date</span>
+              <button class="date-picker__trigger" type="button" data-date-trigger aria-haspopup="dialog" aria-expanded="false" aria-controls="event-date-panel" aria-labelledby="event-date-label event-date-value">
+                <span class="date-picker__value" id="event-date-value" data-date-label>Select a date</span>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="4.5" width="14" height="12.5" rx="1"/><path d="M3 8.5h14M7 2.5v3M13 2.5v3"/></svg>
+              </button>
+              <div class="date-picker__panel" id="event-date-panel" data-date-panel role="dialog" aria-label="Choose your event date" hidden>
+                <div class="date-picker__head">
+                  <button class="date-picker__nav" type="button" data-cal-prev aria-label="Previous month">&lsaquo;</button>
+                  <strong data-cal-title aria-live="polite">&nbsp;</strong>
+                  <button class="date-picker__nav" type="button" data-cal-next aria-label="Next month">&rsaquo;</button>
+                </div>
+                <div class="date-picker__weekdays" aria-hidden="true">
+                  <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                </div>
+                <div class="date-picker__grid" data-cal-grid></div>
+                <div class="date-picker__legend">
+                  <span class="is-available">Available</span><span class="is-booked">Booked</span><span class="is-blocked">Unavailable</span>
+                </div>
+                <p class="date-picker__msg" data-cal-msg role="status"></p>
+              </div>
+              <input type="hidden" name="eventDate" value="" data-date-value>
+            </div>
+            <label class="field"><span class="field__label">Location</span><input type="text" name="location" required placeholder="Event location"></label>
+          </div>
+          <label class="field"><span class="field__label">Message</span><textarea name="message" rows="4" required placeholder="Tell us about your celebration"></textarea></label>
+          <div class="hp-field" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+          <button class="button button--gold" type="submit">Send Enquiry <span aria-hidden="true">↗</span></button>
+          <p class="form-status" data-form-status role="status" hidden></p>
+          <p class="form-note" data-form-note>Your enquiry is sent straight to Aniket Patel &amp; Band. Only dates shown as available can be requested — you will hear back once the booking is reviewed.</p>
+        </form>
+        <div class="enquiry-success" data-enquiry-success role="status" aria-live="polite">
+          <p class="eyebrow">Enquiry Received</p>
+          <h3 class="enquiry-success__title" tabindex="-1">Thank You</h3>
+          <p class="enquiry-success__lede">Your enquiry is with<br><em>Aniket Patel &amp; Band</em></p>
+          <p class="enquiry-success__note">Aniket Patel &amp; Band have been notified and will review your requested date. You will be contacted using the details you provided.</p>
+          <dl class="enquiry-success__summary">
+            <div><dt>Event</dt><dd data-success-event></dd></div>
+            <div><dt>Date</dt><dd data-success-date></dd></div>
+            <div><dt>Location</dt><dd data-success-location></dd></div>
+          </dl>
+          <div class="enquiry-success__actions">
+            <button class="button button--gold" type="button" data-success-again>Send Another Enquiry <span aria-hidden="true">↗</span></button>
+            <a class="enquiry-success__back" href="#home">Back to top</a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACADEMIES — part of the same brand ecosystem, not a third-party banner.
+         Both destinations are the exact URLs supplied by the artist.
+         ==================================================================== -->
+    <section class="academies section" id="academies" aria-labelledby="academies-title">
+      <div class="shell">
+        <div class="section-heading section-heading--center" data-reveal>
+          <p class="eyebrow eyebrow--sym"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg> Also by Aniket Patel</p>
+          <h2 id="academies-title" class="title-reveal"><span class="title-line"><span>Explore the</span></span><span class="title-line"><em>academies.</em></span></h2>
+          <p class="academies__sub">Music. Movement. Expression.</p>
+        </div>
+
+        <div class="academy-grid">
+          <a class="academy-card academy-card--music"
+             href="https://www.instagram.com/suket_music_academy?igsh=MTl6eXAzNnRwcGZvZQ=="
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Suket Music Academy on Instagram (opens in a new tab)" data-reveal>
+            <div class="academy-card__art" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="academy-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-headphones"/></svg></span>
+            <span class="academy-card__label">Music Academy</span>
+            <h3>Suket<br>Music Academy</h3>
+            <span class="academy-card__handle"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg> @suket_music_academy</span>
+            <span class="academy-card__cta">Visit Instagram <span aria-hidden="true">↗</span></span>
+          </a>
+
+          <a class="academy-card academy-card--dance"
+             href="https://www.instagram.com/suket_dance_academy?igsh=MWNteWZ4ZnRpMGF3bQ=="
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Suket Dance Academy on Instagram (opens in a new tab)" data-reveal>
+            <div class="academy-card__art academy-card__art--motion" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="academy-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-motion"/></svg></span>
+            <span class="academy-card__label">Dance Academy</span>
+            <h3>Suket<br>Dance Academy</h3>
+            <span class="academy-card__handle"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg> @suket_dance_academy</span>
+            <span class="academy-card__cta">Visit Instagram <span aria-hidden="true">↗</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer__top">
+      <div class="footer__identity">
+        <a class="brand brand--footer" href="#home" aria-label="Aniket Patel and Band, back to top">
+          <svg class="brand__logo" viewBox="0 0 48 48" aria-hidden="true"><use href="#ap-mark"/></svg>
+          <span class="brand__name">Aniket Patel <i>&amp; Band</i></span>
+        </a>
+        <div class="footer__profile">
+          <img class="footer__dp"
+               src="assets/media/images/aniket-profile-256.webp"
+               srcset="assets/media/images/aniket-profile-256.webp 256w,
+                       assets/media/images/aniket-profile-512.webp 512w"
+               sizes="64px" width="256" height="256" loading="lazy" decoding="async"
+               alt="Portrait of Aniket Patel">
+          <span class="footer__profile-text">
+            <b>Aniket Patel</b>
+            <i>Vocalist / Live Performer</i>
+          </span>
+        </div>
+        <p class="footer__tagline"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg> Feel the Music</p>
+        <p class="footer__place"><svg class="icon" aria-hidden="true"><use href="#i-location"/></svg> Ahmedabad, Gujarat</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <span class="footer__heading"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg> Explore</span>
+        <a href="#home"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg> Home</a>
+        <a href="#about"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg> About</a>
+        <a href="#music"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg> Music</a>
+        <a href="#events"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg> Events</a>
+        <a href="ahmedabad-live-singer-band.html"><svg class="icon" aria-hidden="true"><use href="#i-location"/></svg> Ahmedabad Live Music</a>
+        <a href="#live"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg> Live</a>
+        <a href="#gallery"><svg class="icon" aria-hidden="true"><use href="#i-gallery"/></svg> Gallery</a>
+        <a href="feedback.html"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg> Feedback</a>
+      </nav>
+
+      <div class="footer__contact">
+        <span class="footer__heading"><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg> Bookings</span>
+        <a href="tel:+918866566520"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> +91 88665 66520</a>
+        <a href="https://wa.me/918866566520" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Aniket Patel (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp</a>
+        <a href="mailto:patelaniket3028@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> patelaniket3028@gmail.com</a>
+        <a href="https://www.instagram.com/animusic_official?igsh=MWIzY3l6N3ZxNG1vag%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram animusic_official (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg> @animusic_official</a>
+        <a href="#connect"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg> Book A Performance</a>
+      </div>
+
+      <div class="footer__academies">
+        <span class="footer__heading"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg> Academies</span>
+        <a href="https://www.instagram.com/suket_music_academy?igsh=MTl6eXAzNnRwcGZvZQ==" target="_blank" rel="noopener noreferrer" aria-label="Suket Music Academy on Instagram (opens in a new tab)">
+          <svg class="icon" aria-hidden="true"><use href="#i-headphones"/></svg>
+          <span>Suket Music Academy<i>@suket_music_academy</i></span>
+        </a>
+        <a href="https://www.instagram.com/suket_dance_academy?igsh=MWNteWZ4ZnRpMGF3bQ==" target="_blank" rel="noopener noreferrer" aria-label="Suket Dance Academy on Instagram (opens in a new tab)">
+          <svg class="icon" aria-hidden="true"><use href="#i-motion"/></svg>
+          <span>Suket Dance Academy<i>@suket_dance_academy</i></span>
+        </a>
+      </div>
+    </div>
+    <div class="shell footer__bottom"><span>© <span data-year></span> Aniket Patel &amp; Band</span><a href="#home">Back to top ↑</a></div>
+  </footer>
+
+  <div class="media-modal" data-video-modal hidden role="dialog" aria-modal="true" aria-label="Performance video">
+    <div class="media-modal__inner">
+      <button class="media-modal__close" type="button" data-modal-close aria-label="Close video">&times;</button>
+      <video class="media-modal__video" data-modal-video controls playsinline preload="none"></video>
+      <p class="media-modal__caption" data-modal-caption></p>
+    </div>
+  </div>
+
+  <div class="media-modal" data-lightbox hidden role="dialog" aria-modal="true" aria-label="Photograph">
+    <div class="media-modal__inner">
+      <button class="media-modal__close" type="button" data-modal-close aria-label="Close photograph">&times;</button>
+      <button class="media-modal__nav media-modal__nav--prev" type="button" data-lightbox-prev aria-label="Previous photograph">&lsaquo;</button>
+      <img class="media-modal__image" data-lightbox-img alt="">
+      <button class="media-modal__nav media-modal__nav--next" type="button" data-lightbox-next aria-label="Next photograph">&rsaquo;</button>
+      <p class="media-modal__caption" data-lightbox-caption></p>
+    </div>
+  </div>
+
+  <div class="custom-cursor" aria-hidden="true"><span></span></div>
+
+  <script src="js/supabase-config.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/booking.js" defer></script>
+  <script src="js/media.js" defer></script>
+</body>
+</html>

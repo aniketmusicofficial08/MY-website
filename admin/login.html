@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0907">
+  <title>Admin Sign In | Aniket Patel &amp; Band</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="../js/supabase-config.js"></script>
+</head>
+<body>
+  <main class="login-wrap">
+    <div class="login-card">
+      <div class="login-card__mark" aria-hidden="true">AP</div>
+      <p class="eyebrow">Aniket Patel &amp; Band</p>
+      <h1>Admin <em>Sign In</em></h1>
+
+      <p class="notice" data-notice hidden></p>
+
+      <form data-login-form novalidate>
+        <div class="field">
+          <label for="admin-email">Email</label>
+          <input id="admin-email" name="email" type="email" autocomplete="username" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="admin-password">Password</label>
+          <input id="admin-password" name="password" type="password" autocomplete="current-password" required placeholder="Your password">
+        </div>
+        <button class="btn btn--gold btn--full" type="submit">Sign In</button>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

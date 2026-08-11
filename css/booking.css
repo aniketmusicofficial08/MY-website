@@ -1,0 +1,345 @@
+/* Booking calendar + live enquiry form.
+   Loaded after style.css; adds only new classes, overrides nothing. */
+
+:root {
+  --avail: #6ba97c;
+  --avail-soft: rgba(107, 169, 124, .14);
+  --busy: #c4604c;
+  --busy-soft: rgba(196, 96, 76, .14);
+  --blocked: #8f7c4a;
+  --blocked-soft: rgba(143, 124, 74, .16);
+}
+
+/* Honeypot — off-screen, never announced, never focusable. */
+.hp-field {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.date-picker { position: relative; }
+
+.date-picker__trigger {
+  width: 100%;
+  min-height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .75rem 0;
+  border: 0;
+  border-bottom: 1px solid rgba(242, 234, 217, .2);
+  color: var(--cream);
+  background: transparent;
+  font-family: var(--sans);
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-weight: 400;
+  text-align: left;
+  cursor: pointer;
+}
+.date-picker__trigger[aria-expanded="true"] { border-color: var(--gold); }
+.date-picker__trigger[aria-invalid="true"] { border-color: #d7866d; }
+.date-picker__trigger svg {
+  width: 18px;
+  flex: none;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+}
+.date-picker__value { color: #8a8275; transition: color .3s var(--ease-luxury); }
+.date-picker__value.is-set { color: var(--cream); }
+
+.date-picker__panel {
+  position: absolute;
+  top: calc(100% + .45rem);
+  right: 0;
+  left: 0;
+  z-index: 40;
+  min-width: 262px;
+  padding: .9rem;
+  border: 1px solid rgba(214, 168, 79, .32);
+  background: #11100e;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .52);
+}
+.date-picker__panel[hidden] { display: none; }
+
+.date-picker__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin-bottom: .8rem;
+}
+.date-picker__head strong {
+  color: var(--cream);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  text-transform: none;
+}
+.date-picker__nav {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  color: var(--cream);
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color .3s, color .3s;
+}
+.date-picker__nav:hover:not(:disabled) { border-color: var(--gold); color: var(--gold-light); }
+.date-picker__nav:disabled { opacity: .3; cursor: not-allowed; }
+
+.date-picker__weekdays,
+.date-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+.date-picker__weekdays {
+  margin-bottom: .35rem;
+  color: #7d7669;
+  font-size: .58rem;
+  letter-spacing: .1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.date-picker__weekdays span { padding-block: .25rem; }
+
+.date-picker__day {
+  aspect-ratio: 1;
+  min-height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: var(--cream);
+  background: transparent;
+  font-size: .74rem;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: border-color .25s, background .25s, color .25s, transform .25s;
+}
+.date-picker__day--empty { cursor: default; }
+
+.date-picker__day--available { color: #d8e6dc; background: var(--avail-soft); border-color: rgba(107, 169, 124, .3); }
+.date-picker__day--available:hover { border-color: var(--avail); transform: translateY(-2px); }
+
+.date-picker__day--booked { color: #e3b3a8; background: var(--busy-soft); border-color: rgba(196, 96, 76, .32); cursor: not-allowed; }
+.date-picker__day--blocked { color: #ded0aa; background: var(--blocked-soft); border-color: rgba(143, 124, 74, .34); cursor: not-allowed; }
+.date-picker__day--past { color: #4d483f; cursor: not-allowed; }
+.date-picker__day--loading { color: #55504a; cursor: progress; }
+
+.date-picker__day--selected {
+  color: var(--ink);
+  background: var(--gold);
+  border-color: var(--gold-light);
+  font-weight: 600;
+}
+.date-picker__day--selected:hover { background: var(--gold-light); }
+
+.date-picker__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  margin-top: .85rem;
+  padding-top: .7rem;
+  border-top: 1px solid var(--line);
+  color: #8f887c;
+  font-size: .58rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.date-picker__legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.date-picker__legend span::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+.date-picker__legend .is-available::before { background: var(--avail); }
+.date-picker__legend .is-booked::before { background: var(--busy); }
+.date-picker__legend .is-blocked::before { background: var(--blocked); }
+
+.date-picker__msg {
+  min-height: 1.1rem;
+  margin: .6rem 0 0;
+  color: var(--gold-light);
+  font-size: .68rem;
+}
+.date-picker__msg:empty { display: none; }
+
+/* Form status + success state */
+.form-status {
+  margin: 0;
+  padding: .9rem 1rem;
+  border: 1px solid var(--line);
+  color: var(--cream-muted);
+  font-size: .74rem;
+  line-height: 1.55;
+}
+.form-status[hidden] { display: none; }
+.form-status--error { border-color: rgba(196, 96, 76, .5); color: #e8b6aa; background: var(--busy-soft); }
+.form-status--success { border-color: rgba(107, 169, 124, .5); color: #cfe4d6; background: var(--avail-soft); }
+.form-status--busy { border-color: rgba(214, 168, 79, .4); color: var(--gold-light); background: rgba(214, 168, 79, .07); }
+
+.enquiry-form .button[aria-busy="true"],
+.enquiry-form .button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Booking shell — the form and the success panel are mutually exclusive states of the
+   SAME grid cell. Exactly one child is ever displayed, so the success card can never
+   become a third grid item and wrap underneath the Connect heading.
+
+   These selectors carry higher specificity than `.enquiry-form { display: grid }` in
+   style.css, which is required: an author `display` declaration outranks the user-agent
+   `[hidden] { display: none }` rule, so the `hidden` attribute alone cannot hide it. */
+.booking-shell { min-width: 0; }
+.booking-shell[data-state="form"]    > .enquiry-success { display: none; }
+.booking-shell[data-state="success"] > .enquiry-form    { display: none; }
+
+.enquiry-success {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1.6rem, 4vw, 3.2rem);
+  border: 1px solid rgba(214, 168, 79, .28);
+  background: linear-gradient(145deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .012));
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .18);
+  /* No fill-mode on purpose: the resting state is fully visible, so the panel can never
+     be stranded at opacity 0 if the animation is blocked, skipped or never composited.
+     The entrance is a progressive enhancement, not a prerequisite for being seen. */
+  animation: successRise .45s var(--ease-luxury);
+}
+.enquiry-success::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 8%;
+  width: 24%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+@keyframes successRise {
+  from { opacity: 0; transform: translateY(20px); }
+}
+
+.enquiry-success .eyebrow {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--avail);
+}
+.enquiry-success .eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--avail);
+  box-shadow: 0 0 10px rgba(107, 169, 124, .7);
+}
+
+/* Deliberately smaller than the Connect heading so hierarchy reads left-to-right. */
+.enquiry-success__title {
+  margin: 0;
+  color: var(--cream);
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.enquiry-success__lede {
+  margin: 0;
+  color: var(--cream);
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 1.9vw, 1.6rem);
+  line-height: 1.28;
+}
+.enquiry-success__lede em { color: var(--gold); font-style: italic; }
+.enquiry-success__note {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--cream-muted);
+  font-size: .82rem;
+  line-height: 1.65;
+}
+
+.enquiry-success__summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem 1.5rem;
+  margin: 0;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.enquiry-success__summary > div { min-width: 0; }
+.enquiry-success__summary dt {
+  color: #8f887c;
+  font-size: .58rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.enquiry-success__summary dd {
+  margin: .35rem 0 0;
+  color: var(--cream);
+  font-size: .88rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.enquiry-success__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.4rem;
+}
+.enquiry-success__back {
+  color: var(--cream-muted);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  border-bottom: 1px solid transparent;
+  transition: color .3s var(--ease-luxury), border-color .3s var(--ease-luxury);
+}
+.enquiry-success__back:hover { color: var(--gold-light); border-color: var(--gold); }
+
+@media (max-width: 480px) {
+  .date-picker__panel { padding: .7rem; }
+  .date-picker__day { min-height: 32px; font-size: .68rem; }
+  .date-picker__weekdays, .date-picker__grid { gap: 2px; }
+  .date-picker__legend { gap: .4rem .8rem; font-size: .55rem; }
+
+  .enquiry-success { padding: 1.35rem; gap: 1.05rem; }
+  .enquiry-success__summary { grid-template-columns: 1fr; gap: .85rem; }
+  .enquiry-success__actions { flex-direction: column; align-items: stretch; gap: .9rem; }
+  .enquiry-success__actions .button { width: 100%; justify-content: center; gap: .6rem; }
+  .enquiry-success__back { text-align: center; }
+}
+
+@media (max-width: 360px) {
+  .date-picker__panel { padding: .55rem; }
+  .date-picker__day { min-height: 30px; font-size: .64rem; }
+  .enquiry-success { padding: 1.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enquiry-success { animation: none; }
+}

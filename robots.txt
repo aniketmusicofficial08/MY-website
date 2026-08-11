@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Add the absolute production sitemap URL after the public domain is configured.

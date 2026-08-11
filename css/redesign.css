@@ -1,0 +1,747 @@
+/* ============================================================================
+   Aniket Patel & Band — design system + section art direction
+   Loaded last. Layers on top of style.css / booking.css / media.css.
+
+   Principles applied throughout:
+   · Gold is punctuation, not paint. Body copy stays ivory.
+   · Every section gets its own background tone so the page has rhythm.
+   · One hover language: -4px lift, warming border, radial light, arrow travel.
+   · Resting state is always visible; motion is enhancement only.
+   ========================================================================= */
+
+:root {
+  /* surfaces — subtle tonal steps rather than one flat black */
+  --surface-0: #0a0907;   /* deepest        */
+  --surface-1: #0d0c0a;   /* raised         */
+  --surface-2: #11100d;   /* card           */
+  --surface-3: #171510;   /* charcoal       */
+
+  /* motion */
+  --ease-premium: cubic-bezier(.2, .8, .2, 1);
+  --duration-fast: .25s;
+  --duration-medium: .45s;
+  --duration-slow: .8s;
+
+  /* spacing scale */
+  --space-xs: .5rem;
+  --space-sm: .9rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: clamp(3rem, 6vw, 5.5rem);
+
+  /* lines & light */
+  --hairline: rgba(242, 234, 217, .1);
+  --hairline-warm: rgba(214, 168, 79, .28);
+  --glow-warm: rgba(236, 178, 89, .13);
+}
+
+/* ------------------------------------------------------- background rhythm */
+
+.music     { background: linear-gradient(180deg, var(--surface-1), var(--surface-0)); }
+.events    { background: var(--surface-1); }
+.experience{ background: linear-gradient(180deg, var(--surface-0), var(--surface-1) 55%, var(--surface-0)); }
+.social    { background: var(--surface-0); }
+.gallery   { background: linear-gradient(180deg, var(--surface-0), var(--surface-1)); }
+
+/* A hairline of warm light where sections meet, so they read as one document. */
+.music::before, .events::before, .experience::before,
+.showreel::before, .gallery::before, .social::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(560px, 60%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hairline-warm), transparent);
+  transform: translateX(-50%);
+}
+
+/* ------------------------------------------------------------- typography */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .8;
+}
+.section-heading--split > p,
+.section-heading p:not(.eyebrow) {
+  font-size: .86rem;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   MUSIC — editorial mosaic
+   The genre NAME is the subject; everything else recedes.
+   ======================================================================== */
+
+.genre-grid { gap: clamp(.7rem, 1.2vw, 1.1rem); }
+
+.genre-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: var(--surface-2);
+  transition:
+    transform var(--duration-medium) var(--ease-premium),
+    border-color var(--duration-medium) var(--ease-premium),
+    background var(--duration-medium) var(--ease-premium);
+}
+
+/* Vinyl-groove texture, barely there until hover. */
+.genre-card::before {
+  content: "";
+  position: absolute;
+  right: -30%;
+  bottom: -55%;
+  z-index: -1;
+  width: 128%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle, transparent 0 7px, rgba(242, 234, 217, .05) 8px 9px);
+  opacity: .3;
+  transition: opacity var(--duration-slow) var(--ease-premium),
+              transform var(--duration-slow) var(--ease-premium);
+}
+
+/* Pointer-tracked warm light, shared with every other card on the site. */
+.genre-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(220px circle at var(--mouse-x, 50%) var(--mouse-y, 0%),
+              var(--glow-warm), transparent 68%);
+  opacity: 0;
+  transition: opacity var(--duration-medium) var(--ease-premium);
+}
+
+.genre-card__index {
+  color: var(--gold);
+  font-size: .58rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .2em;
+}
+.genre-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.1vw, 2.15rem);
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  transition: transform var(--duration-medium) var(--ease-premium),
+              color var(--duration-medium) var(--ease-premium);
+}
+.genre-card p {
+  color: #8f887c;
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.genre-card--feature h3 { font-size: clamp(1.8rem, 3.1vw, 3.1rem); }
+.genre-card--dark { background: var(--surface-3); }
+
+@media (hover: hover) and (pointer: fine) {
+  .genre-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--hairline-warm);
+    background: var(--surface-3);
+  }
+  .genre-card:hover::before { opacity: .6; transform: rotate(8deg) scale(1.04); }
+  .genre-card:hover::after  { opacity: 1; }
+  .genre-card:hover h3 { transform: translateX(4px); color: var(--gold-light); }
+}
+
+/* ==========================================================================
+   GOLDEN ERA — signature section
+   ======================================================================== */
+
+.retro {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(90% 70% at 22% 40%, rgba(169, 95, 36, .16), transparent 62%),
+    linear-gradient(180deg, var(--surface-0), #0c0a08);
+}
+
+/* Oversized ghost numeral — editorial anchor, purely decorative. */
+.retro__content::before {
+  content: "01";
+  position: absolute;
+  top: -.28em;
+  right: -.04em;
+  z-index: 0;
+  color: rgba(242, 234, 217, .028);
+  font-family: var(--font-display);
+  font-size: clamp(13rem, 26vw, 26rem);
+  font-weight: 600;
+  line-height: 1;
+  pointer-events: none;
+}
+.retro__copy { position: relative; z-index: 1; }
+.retro__copy h2 { font-size: clamp(2.8rem, 6vw, 5.6rem); }
+
+/* Analog frequency bars beneath the heading. */
+.retro__copy > p { position: relative; }
+.retro__copy > p::before {
+  content: "";
+  display: block;
+  width: 74px;
+  height: 1px;
+  margin-bottom: 1.4rem;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.legend-list { gap: .55rem; }
+.legend-list span {
+  position: relative;
+  padding: .7rem 1rem .7rem 1.6rem;
+  border: 1px solid var(--hairline);
+  color: #c6bdad;
+  font-size: .68rem;
+  letter-spacing: .1em;
+  transition: color var(--duration-medium) var(--ease-premium),
+              border-color var(--duration-medium) var(--ease-premium),
+              background var(--duration-medium) var(--ease-premium);
+}
+/* Three-bar equaliser mark, animating only on hover. */
+.legend-list span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: .75rem;
+  width: 3px;
+  height: 7px;
+  background: var(--gold);
+  box-shadow: 4px 0 0 var(--gold), -4px 0 0 var(--gold);
+  transform: translateY(-50%);
+  opacity: .55;
+  transition: opacity var(--duration-medium) var(--ease-premium);
+}
+@media (hover: hover) and (pointer: fine) {
+  .legend-list span:hover {
+    color: var(--gold-light);
+    border-color: var(--hairline-warm);
+    background: rgba(214, 168, 79, .06);
+  }
+  .legend-list span:hover::before { opacity: 1; animation: eqPulse .9s ease-in-out infinite alternate; }
+}
+@keyframes eqPulse {
+  to { height: 13px; box-shadow: 4px 0 0 var(--gold), -4px 0 0 var(--gold); }
+}
+
+/* ==========================================================================
+   EVENTS — refined cards, consistent SVG line icons
+   ======================================================================== */
+
+.event-grid { gap: clamp(.7rem, 1.2vw, 1.1rem); }
+
+.event-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: var(--surface-2);
+  transition: transform var(--duration-medium) var(--ease-premium),
+              border-color var(--duration-medium) var(--ease-premium);
+}
+.event-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(200px circle at var(--mouse-x, 50%) var(--mouse-y, 0%),
+              var(--glow-warm), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--duration-medium) var(--ease-premium);
+}
+/* Gold rule that grows along the bottom edge. */
+.event-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-slow) var(--ease-premium);
+}
+.event-icon svg {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke var(--duration-medium) var(--ease-premium),
+              transform var(--duration-medium) var(--ease-premium);
+}
+.event-card small {
+  color: var(--gold);
+  font-size: .56rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .2em;
+}
+.event-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.5vw, 1.5rem);
+  line-height: 1.12;
+  transition: color var(--duration-medium) var(--ease-premium);
+  overflow-wrap: break-word;   /* "Housewarming Ceremonies" must never clip */
+  hyphens: auto;
+}
+.event-card--large h3, .event-card--wide h3 { font-size: clamp(1.3rem, 2.2vw, 2.1rem); }
+
+@media (hover: hover) and (pointer: fine) {
+  .event-card:hover { transform: translateY(-4px); border-color: var(--hairline-warm); }
+  .event-card:hover::before { transform: scaleX(1); }
+  .event-card:hover::after { opacity: 1; }
+  .event-card:hover .event-icon svg { stroke: var(--gold-light); transform: translateY(-2px); }
+  .event-card:hover h3 { color: var(--gold-light); }
+}
+
+/* ==========================================================================
+   LIVE EXPERIENCE — cinematic, image-led
+   ======================================================================== */
+
+.experience__inner { position: relative; z-index: 1; }
+.experience h2 { font-size: clamp(2.6rem, 5.4vw, 5rem); }
+
+.experience__media {
+  position: relative;
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+}
+.experience__media img {
+  width: 100%;
+  height: clamp(260px, 42vw, 520px);
+  object-fit: cover;
+  object-position: 50% 42%;
+  filter: saturate(.85) contrast(1.05) brightness(.78);
+  transition: transform var(--duration-slow) var(--ease-premium),
+              filter var(--duration-slow) var(--ease-premium);
+}
+.experience__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(10, 9, 7, .95) 2%, transparent 52%),
+    radial-gradient(90% 70% at 50% 100%, rgba(236, 178, 89, .16), transparent 60%);
+  pointer-events: none;
+}
+.experience__words {
+  position: absolute;
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(1rem, 3vw, 2.4rem);
+  left: clamp(1rem, 4vw, 3rem);
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: clamp(.8rem, 3vw, 2.6rem);
+}
+.experience__words b {
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4.4vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.experience__words b:nth-child(2) { color: var(--gold); }
+@media (hover: hover) and (pointer: fine) {
+  .experience__media:hover img { transform: scale(1.03); filter: saturate(1) contrast(1.06) brightness(.86); }
+}
+
+.experience__flow article { transition: transform var(--duration-medium) var(--ease-premium); }
+.experience__flow article span { color: var(--gold); font-variant-numeric: tabular-nums; }
+.experience__flow h3 { font-family: var(--font-display); font-size: clamp(1.15rem, 1.8vw, 1.6rem); }
+@media (hover: hover) and (pointer: fine) {
+  .experience__flow article:hover { transform: translateY(-3px); }
+}
+
+/* ==========================================================================
+   SOCIAL — platform identity within the black/gold system
+   ======================================================================== */
+
+.social-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: var(--surface-2);
+  transition: transform var(--duration-medium) var(--ease-premium),
+              border-color var(--duration-medium) var(--ease-premium),
+              background var(--duration-medium) var(--ease-premium);
+}
+.social-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(260px circle at var(--mouse-x, 50%) var(--mouse-y, 0%),
+              var(--glow-warm), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--duration-medium) var(--ease-premium);
+}
+.social-card__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--hairline-warm);
+  border-radius: 50%;
+  color: var(--gold-light);
+  font-size: 1rem;
+  transition: transform var(--duration-medium) var(--ease-premium),
+              background var(--duration-medium) var(--ease-premium),
+              color var(--duration-medium) var(--ease-premium);
+}
+.social-card__label {
+  color: #8f887c;
+  font-size: .58rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.social-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+  line-height: 1.06;
+  transition: color var(--duration-medium) var(--ease-premium);
+}
+.social-card__arrow {
+  color: var(--gold);
+  transition: transform var(--duration-medium) var(--ease-premium);
+}
+@media (hover: hover) and (pointer: fine) {
+  .social-card:hover { transform: translateY(-4px); border-color: var(--hairline-warm); background: var(--surface-3); }
+  .social-card:hover::after { opacity: 1; }
+  .social-card:hover .social-card__icon { transform: scale(1.06); background: var(--gold); color: var(--ink); }
+  .social-card:hover .social-card__arrow { transform: translate(4px, -4px); }
+  .social-card:hover h3 { color: var(--gold-light); }
+}
+
+/* ==========================================================================
+   FINAL CTA + FOOTER
+   ======================================================================== */
+
+.finale { position: relative; overflow: hidden; }
+.finale__inner { position: relative; z-index: 1; }
+.finale h2 { font-size: clamp(2.6rem, 6.4vw, 6rem); line-height: .98; }
+.finale__actions { gap: .8rem; }
+
+.footer { position: relative; background: var(--surface-0); }
+.footer__top { border-bottom: 1px solid var(--hairline); }
+.footer__links a {
+  position: relative;
+  transition: color var(--duration-medium) var(--ease-premium);
+}
+.footer__links a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  left: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-medium) var(--ease-premium);
+}
+.footer__links a:hover { color: var(--gold-light); }
+.footer__links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* Waveform rule closing the page. */
+.footer__bottom { position: relative; }
+.footer__bottom::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--hairline-warm) 0 3px, transparent 3px 9px);
+  opacity: .5;
+}
+
+/* ==========================================================================
+   UNIFIED BUTTON + LINK LANGUAGE
+   ======================================================================== */
+
+.button {
+  position: relative;
+  overflow: hidden;
+  transition: color var(--duration-medium) var(--ease-premium),
+              background var(--duration-medium) var(--ease-premium),
+              border-color var(--duration-medium) var(--ease-premium),
+              transform var(--duration-medium) var(--ease-premium);
+}
+.button span { transition: transform var(--duration-medium) var(--ease-premium); }
+@media (hover: hover) and (pointer: fine) {
+  .button:hover { transform: translateY(-3px); }
+  .button:hover span { transform: translate(3px, -3px); }
+}
+.button:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+
+/* ==========================================================================
+   ANIMATION SAFETY
+   Resting state must be readable even if observers never fire.
+   ======================================================================== */
+
+/* Inverted reveal pattern.
+   Previously `[data-reveal] { opacity: 0 }` was the RESTING state, so the page was
+   invisible unless a transition completed — if the compositor stalled, JS failed, or
+   the observer never fired, the site rendered blank. Content is now visible by
+   default; the hidden start state exists only while JS is running AND the element is
+   still unrevealed. */
+[data-reveal] { opacity: 1; transform: none; }
+html.js-reveal [data-reveal]:not(.is-visible) { opacity: 0; transform: translateY(28px); }
+
+html.js-reveal .title-line > span,
+html.js-reveal .title-line > em { opacity: 0; transform: translateY(112%); }
+html.js-reveal .is-visible .title-line > span,
+html.js-reveal .is-visible .title-line > em,
+html.js-reveal .title-reveal.is-visible .title-line > span,
+html.js-reveal .title-reveal.is-visible .title-line > em { opacity: 1; transform: none; }
+html:not(.js-reveal) .title-line > span,
+html:not(.js-reveal) .title-line > em { opacity: 1; transform: none; }
+
+/* Hard failsafe. Transitions are stripped so the final state applies instantly and
+   cannot be stranded mid-animation by a stalled compositor. */
+html.reveal-done [data-reveal],
+html.reveal-done .title-line > span,
+html.reveal-done .title-line > em {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], .title-line > span, .title-line > em { opacity: 1 !important; transform: none !important; }
+  .genre-card::before, .legend-list span::before { animation: none !important; }
+}
+
+@media (scripting: none) {
+  [data-reveal], .title-line > span, .title-line > em { opacity: 1 !important; transform: none !important; }
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 1024px) {
+  .retro__content::before { font-size: clamp(9rem, 30vw, 16rem); }
+}
+@media (max-width: 768px) {
+  .experience__words { gap: .6rem 1.2rem; }
+  .experience__media img { height: clamp(220px, 56vw, 360px); }
+}
+@media (max-width: 480px) {
+  .genre-card h3 { font-size: 1.5rem; }
+  .genre-card--feature h3 { font-size: 1.9rem; }
+  .event-card h3 { font-size: 1.05rem; }
+  .social-card h3 { font-size: 1.75rem; }
+  .experience__words b { font-size: 1.35rem; }
+}
+
+/* ============================================================================
+   ICON SYSTEM
+   One sprite, referenced by <use>. Vector at every DPR — nothing to pixelate.
+   ========================================================================= */
+
+.icon-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -.125em;
+}
+
+/* ------------------------------------------------------------ hero additions */
+
+.hero__tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 1.1rem 0 0;
+  color: var(--gold-light);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.5vw, 1.35rem);
+  font-style: italic;
+  letter-spacing: .01em;
+}
+.hero__tagline .icon { width: 1.05em; height: 1.05em; stroke-width: 1.3; opacity: .9; }
+
+.button--ghost {
+  border-color: rgba(242, 234, 217, .18);
+  color: var(--cream-muted);
+  gap: .55rem;
+}
+.button--ghost .icon { width: 1.1em; height: 1.1em; }
+.button--ghost:hover { border-color: var(--gold); color: var(--gold-light); }
+
+/* --------------------------------------------------------------- contact list */
+
+.connect__label {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin: 0 0 1rem;
+  color: var(--gold);
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.connect__label .icon { width: 1.15em; height: 1.15em; }
+
+.contact-list {
+  display: grid;
+  gap: 1px;
+  margin: 0 0 2rem;
+  padding: 0;
+  border: 1px solid var(--hairline);
+  background: var(--hairline);
+  list-style: none;
+}
+.contact-list li { background: var(--surface-1); }
+.contact-list a,
+.contact-list__static {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  min-height: 56px;                 /* comfortable touch target */
+  padding: .8rem 1rem;
+  color: var(--cream);
+  transition: background var(--duration-medium) var(--ease-premium),
+              color var(--duration-medium) var(--ease-premium);
+}
+.contact-list .icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--gold);
+  transition: transform var(--duration-medium) var(--ease-premium);
+}
+.contact-list span { display: grid; gap: .1rem; min-width: 0; }
+.contact-list b {
+  color: #8f887c;
+  font-size: .56rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.contact-list span { font-size: .84rem; overflow-wrap: anywhere; }
+.contact-list__go {
+  margin-left: auto;
+  color: var(--gold);
+  font-style: normal;
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: opacity var(--duration-medium) var(--ease-premium),
+              transform var(--duration-medium) var(--ease-premium);
+}
+.contact-list__static { color: var(--cream-muted); }
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-list a:hover { background: rgba(214, 168, 79, .07); color: var(--gold-light); }
+  .contact-list a:hover .icon { transform: scale(1.12); }
+  .contact-list a:hover .contact-list__go { opacity: 1; transform: none; }
+}
+.contact-list a:focus-visible { outline: 2px solid var(--gold-light); outline-offset: -2px; }
+
+/* ---------------------------------------------------------------- footer */
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.3fr 1fr;
+  gap: clamp(1.6rem, 4vw, 3.5rem);
+  align-items: start;
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  min-height: 0;
+}
+.footer__identity { display: grid; gap: .55rem; justify-items: start; }
+.footer__role { margin: .4rem 0 0; color: var(--cream); font-size: .78rem; letter-spacing: .04em; }
+.footer__tagline,
+.footer__place {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin: 0;
+  color: var(--cream-muted);
+  font-size: .74rem;
+}
+.footer__tagline { color: var(--gold-light); font-family: var(--font-display); font-style: italic; font-size: .92rem; }
+.footer__tagline .icon, .footer__place .icon { width: 1em; height: 1em; color: var(--gold); }
+
+.footer__heading {
+  display: block;
+  margin-bottom: .9rem;
+  color: var(--gold);
+  font-size: .55rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.footer__nav, .footer__contact, .footer__academies { display: grid; gap: .55rem; justify-items: start; }
+.footer__nav a, .footer__contact a, .footer__academies a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--cream-muted);
+  font-size: .76rem;
+  overflow-wrap: anywhere;
+  transition: color var(--duration-medium) var(--ease-premium);
+}
+.footer__contact .icon { width: 1em; height: 1em; color: var(--gold); }
+.footer__nav a:hover, .footer__contact a:hover, .footer__academies a:hover { color: var(--gold-light); }
+.footer__academies a { font-size: .74rem; }
+
+@media (max-width: 900px) {
+  .footer__top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .footer__top { grid-template-columns: 1fr; text-align: left; }
+  .brand--footer { justify-content: flex-start; }
+}
+
+/* ============================================================================
+   LARGE SCREEN / 4K CONTAINMENT
+   Media stays immersive; reading measures stay composed. Content must not
+   simply stretch across 3840px.
+   ========================================================================= */
+
+@media (min-width: 1800px) {
+  :root { --shell: min(1440px, calc(100% - 96px)); }
+  .hero__grid { max-width: 1600px; margin-inline: auto; }
+}
+
+@media (min-width: 2400px) {
+  :root {
+    --shell: min(1600px, calc(100% - 160px));
+    --section-space: clamp(8rem, 7vw, 12rem);
+  }
+  /* Type is already clamped; nudge the floor up so UI is not tiny on a 4K panel. */
+  html { font-size: 18px; }
+  .hero__grid { max-width: 1800px; }
+  .about__copy > p:not(.lead),
+  .section-heading--split > p { max-width: 44ch; }
+}
+
+@media (min-width: 3200px) {
+  :root { --shell: min(1840px, calc(100% - 220px)); }
+  html { font-size: 20px; }
+  .hero__grid { max-width: 2000px; }
+}

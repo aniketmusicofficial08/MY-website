@@ -1,0 +1,17 @@
+# Environment and local credentials
+.env
+.env.*
+!.env.example
+.mcp.json
+.codex/
+
+# Dependencies
+node_modules/
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+
+# Local logs and temporary files
+*.log
+*.tmp
